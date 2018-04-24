@@ -11,6 +11,9 @@
   <script>
   $(document).ready(function() {
     // Submit the form
+
+
+
     $("#add_form").on("submit", function() {
       // AJAX submit the form
       var query = $("#add_form").serialize();
@@ -24,15 +27,66 @@
       return false;
     });
 
+
+
+
+    $(window).on('hashchange', function() {
+      // Get the fragment identifier from the URL
+      var page = window.location.hash;
+      if (page == "#add"){
+        $("#add_page").slideDown();
+        $("#list_page").hide();
+        $("#edit_page").hide();
+      }else if(page == "#list"){
+        $("#list_page").slideDown();
+        $("#add_page").hide();
+        $("#edit_page").hide();
+      }else if (page == "#edit"){
+        $("#edit_page").slideDown();
+        $("#add_page").hide();
+        $("#list_page").hide();
+      }else if((page == "#")){
+        $("#edit_page").hide();
+        $("#add_page").hide();
+        $("#list_page").hide();
+      }else{
+        $("#edit_page").hide();
+        $("#add_page").hide();
+        $("#list_page").hide();
+      }
+    });
+  $(window).trigger("hashchange");
   });
   </script>
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-  <div style="padding: 15px" class="container">
+    <a class="navbar-brand" href="#">
+      <img border="0" src="img/logo.gif" height="75">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#list">List the Magic<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#add">Add Some Magic</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#edit">Edit Character</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div  id ="add_page" class="container" style="display: none">
     <h2>Add Character</h2>
-    <form id="add_form">
-      <div class="form-group">
+    <form id="add_form" >
+      <div class="form-group" display="None">
         <label for="name">Name:</label>
         <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
       </div>
@@ -70,5 +124,16 @@
     <h1 id="success_text" style="display:none;color: green;">Added!</h1>
   </div>
 
-</body>
-</html>
+  <div  id ="list_page" class="container" style="display: none">
+    <h2>List Character</h2>
+    <p> ipsum loreajhakjsd asdkjhakjsdh ajkdhkajshd akjdhkjahsd<p>
+    </div>
+
+    <div  id ="edit_page" class="container" style="display: none">
+      <h2>Edit Character</h2>
+      <p> ipsum lolzi lolzi lolzi akjdhkjahsd<p>
+      </div>
+
+
+    </body>
+    </html>
