@@ -1,0 +1,17 @@
+{
+    "001": {
+        "name": "Ron Weasley",
+        "house": "Gryffindor",
+        "status": "Alive",
+        "patronus": "Jack Russell Terrier",
+        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Ron_Weasley_poster.jpg/220px-Ron_Weasley_poster.jpg"
+    },
+    "002": {
+        "name": "Harry Potter",
+        "house": "Gryffindor",
+        "status": "Alive",
+        "patronus": "Stag",
+        "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+    }
+}
