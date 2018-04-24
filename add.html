@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+      <script>
+    $(document).ready(function() {
+        // Submit the form
+        $("#add_form").on("submit", function() {
+            // AJAX submit the form
+            var query = $("#add_form").serialize();
+            $.post("add.php", query, function(data) {
+                if (data == "success"){
+					$("#add_form").hide();
+					$("#success_text").show();
+				}
+            }, "json");
+
+            return false;
+        });
+
+    });
+    </script>
+</head>
+<body>
+
+<div style="padding: 15px" class="container">
+  <h2>Add Character</h2>
+  <form id="add_form">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="house">House: </label>
+      <input type="text" class="form-control" id="house" placeholder="Enter house" name="house">
+    </div>
+	<div class="form-group">
+      <label for="status">Status: </label>
+      <input type="text" class="form-control" id="status" placeholder="Enter status" name="status">
+    </div>
+	<div class="form-group">
+      <label for="status">Patronus: </label>
+      <input type="text" class="form-control" id="patronus" placeholder="Enter patronus" name="patronus">
+    </div>
+	<div class="form-group">
+      <label for="status">Image: </label>
+      <input type="text" class="form-control" id="status" placeholder="Enter image" name="image">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <h1 id="success_text" style="display:none;color: green;">Added!</h1>
+</div>
+
+</body>
+</html>
