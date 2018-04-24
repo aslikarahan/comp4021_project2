@@ -4,188 +4,188 @@
         "house": "Gryffindor",
         "status": "Half Blood",
         "patronus": "Stag",
-        "image": "img/harry.jpg"
+        "image": "img\/harry.jpg"
     },
     "2": {
         "name": "Ron Weasley",
         "house": "Gryffindor",
         "status": "Pure Blood",
         "patronus": "Jack Russell Terrier",
-        "image": "img/ron.jpg"
+        "image": "img\/ron.jpg"
     },
     "3": {
         "name": "Hermione Granger",
         "house": "Gryffindor",
         "status": "Muggle Born",
         "patronus": "Otter",
-        "image": "img/hermione.jpg"
-      },
+        "image": "img\/hermione.jpg"
+    },
     "4": {
         "name": "Lord Voldemort",
         "house": "Slytherin",
         "status": "Half Blood",
         "patronus": "-",
-        "image": "img/voldemort.jpg"
-        },
+        "image": "img\/voldemort.jpg"
+    },
     "5": {
         "name": "Professor Albus Dumbledore",
         "house": "Gryffindor",
         "status": "Half Blood",
         "patronus": "Phoenix",
-        "image": "img/dumbledore.jpg"
-          },
+        "image": "img\/dumbledore.jpg"
+    },
     "6": {
         "name": "Professor Severus Snape",
         "house": "Slytherin",
         "status": "Half Blood",
         "patronus": "Doe",
-        "image": "img/snape.jpg"
-          },
+        "image": "img\/snape.jpg"
+    },
     "7": {
         "name": "Rubeus Hagrid",
         "house": "Gryffindor",
         "status": "Part Human Part Giant",
         "patronus": "-",
-        "image": "img/hagrid.jpg"
-          },
+        "image": "img\/hagrid.jpg"
+    },
     "8": {
         "name": "Draco Malfoy",
         "house": "Slytherin",
         "status": "Pure Blood",
         "patronus": "-",
-        "image": "img/draco.jpg"
+        "image": "img\/draco.jpg"
     },
     "9": {
         "name": "Nymphadora Tonks",
         "house": "Hufflepuff",
         "status": "Half Blood",
         "patronus": "Wolf (initially Jack Rabbit)",
-        "image": "img/tonks.jpg"
+        "image": "img\/tonks.jpg"
     },
     "10": {
         "name": "Cedric Diggory",
         "house": "Hufflepuff",
         "status": "Pure Blood",
         "patronus": "-",
-        "image": "img/cedric.jpg"
-          },
+        "image": "img\/cedric.jpg"
+    },
     "11": {
         "name": "Bellatrix Lestrange",
         "house": "Slytherin",
         "status": "Pure Blood",
         "patronus": "-",
-        "image": "img/bellatrix.jpg"
-        },
+        "image": "img\/bellatrix.jpg"
+    },
     "12": {
         "name": "Professor Minerva McGonagall",
         "house": "Gryffindor",
         "status": "Half Blood",
         "patronus": "Cat",
-        "image":"img/minerva.jpg"
-          },
+        "image": "img\/minerva.jpg"
+    },
     "13": {
         "name": "Professor Dolores Umbridge",
         "house": "Slytherin",
         "status": "Half Blood",
         "patronus": "Cat",
-        "image": "img/umbridge.jpg"
-      },
+        "image": "img\/umbridge.jpg"
+    },
     "14": {
         "name": "Remus Lupin",
         "house": "Gryffindor",
         "status": "Half Blood",
         "patronus": "Wolf",
-        "image": "img/lupin.jpg"
+        "image": "img\/lupin.jpg"
     },
     "15": {
         "name": "Cho Chang",
         "house": "Ravenclaw",
         "status": "Pure Blood",
         "patronus": "Swan",
-        "image": "img/cho.jpg"
+        "image": "img\/cho.jpg"
     },
     "16": {
         "name": "Luna Lovegood",
         "house": "Ravenclaw",
         "status": "Pure Blood",
         "patronus": "Hare",
-        "image": "img/luna.jpg"
+        "image": "img\/luna.jpg"
     },
     "17": {
         "name": "Professor Sybill Trelawney",
         "house": "Ravenclaw",
         "status": "Half Blood",
         "patronus": "Non-corporeal",
-        "image": "img/trelawney.jpg"
+        "image": "img\/trelawney.jpg"
     },
     "18": {
         "name": "Neville Longbottom",
         "house": "Gryffindor",
         "status": "Pure Blood",
         "patronus": "Non-corporeal",
-        "image": "img/neville.jpg"
+        "image": "img\/neville.jpg"
     },
     "19": {
         "name": "Sirius Black",
         "house": "Gryffindor",
         "status": "Pure Blood",
         "patronus": "Black Dog",
-        "image": "img/sirius.jpg"
+        "image": "img\/sirius.jpg"
     },
     "20": {
         "name": "James Potter",
         "house": "Gryffindor",
         "status": "Pure Blood",
         "patronus": "Stag",
-        "image": "img/james.jpg"
+        "image": "img\/james.jpg"
     },
     "21": {
         "name": "Peter Pettigrew",
         "house": "Gryffindor",
         "status": "Half Blood",
         "patronus": "-",
-        "image": "img/peter.jpg"
+        "image": "img\/peter.jpg"
     },
     "22": {
         "name": "Ginny Weasley",
         "house": "Gryffindor",
         "status": "Pure Blood",
         "patronus": "Horse",
-        "image": "img/ginny.jpg"
+        "image": "img\/ginny.jpg"
     },
     "23": {
         "name": "Arthur Weasley",
         "house": "Gryffindor",
         "status": "Pure Blood",
         "patronus": "Weasel",
-        "image": "img/arthur.jpg"
+        "image": "img\/arthur.jpg"
     },
     "24": {
         "name": "Fred Weasley",
         "house": "Gryffindor",
         "status": "Pure Blood",
         "patronus": "Hyena",
-        "image": "img/fred.jpg"
+        "image": "img\/fred.jpg"
     },
     "25": {
         "name": "George Weasley",
         "house": "Gryffindor",
         "status": "Pure Blood",
         "patronus": "Coyote",
-        "image": "img/george.jpg"
+        "image": "img\/george.jpg"
     },
     "26": {
         "name": "Molly Weasley",
         "house": "Gryffindor",
         "status": "Pure Blood",
         "patronus": "Bear",
-        "image": "img/molly.jpg"
+        "image": "img\/molly.jpg"
     },
     "27": {
         "name": "Lily Potter",
         "house": "Gryffindor",
         "status": "Muggle Born",
         "patronus": "Doe",
-        "image": "img/lily.jpg"
+        "image": "img\/lily.jpg"
     }
 }
