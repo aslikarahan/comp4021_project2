@@ -1,17 +1,219 @@
 {
-    "001": {
+  "001": {
+      "name": "Harry Potter",
+      "house": "Gryffindor",
+      "status": "Half Blood",
+      "patronus": "Stag",
+      "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+  },
+    "002": {
         "name": "Ron Weasley",
         "house": "Gryffindor",
-        "status": "Alive",
+        "status": "Pure Blood",
         "patronus": "Jack Russell Terrier",
         "image": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Ron_Weasley_poster.jpg/220px-Ron_Weasley_poster.jpg"
     },
-    "002": {
-        "name": "Harry Potter",
+    "003": {
+        "name": "Hermione Granger",
         "house": "Gryffindor",
-        "status": "Alive",
-        "patronus": "Stag",
+        "status": "Muggle Born",
+        "patronus": "Otter",
         "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
 
+    },
+    "004": {
+        "name": "Lord Voldemort",
+        "house": "Slytherin",
+        "status": "Half Blood",
+        "patronus": "-",
+        "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+    },
+    "005": {
+        "name": "Professor Albus Dumbledore",
+        "house": "Gryffindor",
+        "status": "Half Blood",
+        "patronus": "Phoenix",
+        "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+    },
+    "006": {
+        "name": "Professor Severus Snape",
+        "house": "Slytherin",
+        "status": "Half Blood",
+        "patronus": "Doe",
+        "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+    },
+    "007": {
+        "name": "Rubeus Hagrid",
+        "house": "Gryffindor",
+        "status": "Part Human Part Giant",
+        "patronus": "-",
+        "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+    },
+    "008": {
+        "name": "Draco Malfoy",
+        "house": "Slytherin",
+        "status": "Pure Blood",
+        "patronus": "-",
+        "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+    },
+    "009": {
+        "name": "Nymphadora Tonks",
+        "house": "Hufflepuff",
+        "status": "Half Blood",
+        "patronus": "Wolf (initially Jack Rabbit)",
+        "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+    },
+    "010": {
+        "name": "Cedric Diggory",
+        "house": "Hufflepuff",
+        "status": "Pure Blood",
+        "patronus": "-",
+        "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+    },
+    "011": {
+        "name": "Bellatrix Lestrange",
+        "house": "Slytherin",
+        "status": "Pure Blood",
+        "patronus": "-",
+        "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+    },
+    "012": {
+        "name": "Professor Minerva McGonagall",
+        "house": "Gryffindor",
+        "status": "Half Blood",
+        "patronus": "Cat",
+        "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+    },
+    "013": {
+        "name": "Professor Dolores Umbridge",
+        "house": "Slytherin",
+        "status": "Half Blood",
+        "patronus": "Cat",
+        "image": "https://www.irishtimes.com/culture/books/harry-potter-turns-20-the-boy-who-changed-books-forever-1.3101811"
+
+    },
+    "014": {
+        "name": "Remus Lupin",
+        "house": "Gryffindor",
+        "status": "Half Blood",
+        "patronus": "Wolf",
+        "image": ""
+
+    },
+    "015": {
+        "name": "Cho Chang",
+        "house": "Ravenclaw",
+        "status": "Pure Blood",
+        "patronus": "Swan",
+        "image": ""
+
+    },
+    "016": {
+        "name": "Luna Lovegood",
+        "house": "Ravenclaw",
+        "status": "Pure Blood",
+        "patronus": "Hare",
+        "image": ""
+
+    },
+    "017": {
+        "name": "Professor Sybill Trelawney",
+        "house": "Ravenclaw",
+        "status": "Half Blood",
+        "patronus": "Non-corporeal",
+        "image": ""
+
+    },
+    "018": {
+        "name": "Neville Longbottom",
+        "house": "Gryffindor",
+        "status": "Pure Blood",
+        "patronus": "Non-corporeal",
+        "image": ""
+
+    },
+    "019": {
+        "name": "Sirius Black",
+        "house": "Gryffindor",
+        "status": "Pure Blood",
+        "patronus": "Black Dog",
+        "image": ""
+
+    },
+    "020": {
+        "name": "James Potter",
+        "house": "Gryffindor",
+        "status": "Pure Blood",
+        "patronus": "Stag",
+        "image": ""
+
+    },
+    "021": {
+        "name": "Peter Pettigrew",
+        "house": "Gryffindor",
+        "status": "Half Blood",
+        "patronus": "-",
+        "image": ""
+
+    },
+    "022": {
+        "name": "Ginny Weasley",
+        "house": "Gryffindor",
+        "status": "Pure Blood",
+        "patronus": "Horse",
+        "image": ""
+
+    },
+    "023": {
+        "name": "Arthur Weasley",
+        "house": "Gryffindor",
+        "status": "Pure Blood",
+        "patronus": "Weasel",
+        "image": ""
+
+    },
+    "024": {
+        "name": "Fred Weasley",
+        "house": "Gryffindor",
+        "status": "Pure Blood",
+        "patronus": "Hyena",
+        "image": ""
+
+    },
+    "025": {
+        "name": "George Weasley",
+        "house": "Gryffindor",
+        "status": "Pure Blood",
+        "patronus": "Coyote",
+        "image": ""
+
+    },
+    "026": {
+        "name": "Molly Weasley",
+        "house": "Gryffindor",
+        "status": "Pure Blood",
+        "patronus": "Bear",
+        "image": ""
+
+    },
+    "027": {
+        "name": "Lily Potter",
+        "house": "Gryffindor",
+        "status": "Muggle Born",
+        "patronus": "Doe",
+        "image": ""
+
     }
+
+
 }
