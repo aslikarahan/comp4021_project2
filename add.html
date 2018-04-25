@@ -49,8 +49,21 @@
         $("#edit_page").hide();
       }else if(page == "#list"){
         $("#list_page").slideDown();
+		var html ="";
+		$.get("list.php", function(data) {
+			var character = JSON.parse(data);
+			 $.each(character, function(key) {
+				html += "<div class='row'><div class='col'>";
+				html += "<div><strong>Name: </strong>"+character[key].name+"</div>";
+				html += "<div><strong>House: </strong>"+character[key].house+"</div>"
+				html += "<div><strong>Status: </strong>"+character[key].status+"</div>"
+				html += "<div><strong>Patronus: </strong>"+character[key].patronus+"</div></div>"
+				html += "<div class='col'>";
+				html += "<div> <img style='height: 300px' src='"+character[key].image+"'></img></div></div></div><br>"
+			 });
+			 $("#list").html(html);
+		});
         $("#home_page").hide();
-
         $("#add_page").hide();
         $("#edit_page").hide();
       }else if (page == "#edit"){
@@ -164,7 +177,8 @@
 
   <div  id ="list_page" class="container" style="display: none">
     <h2>List Character</h2>
-    <p> ipsum loreajhakjsd asdkjhakjsdh ajkdhkajshd akjdhkjahsd<p>
+	<br>
+	<div id="list"></div>
     </div>
 
     <div  id ="edit_page" class="container" style="display: none">
