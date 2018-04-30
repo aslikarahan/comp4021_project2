@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -18,7 +20,7 @@
 <script>
 $(document).ready(function() {
   // Submit the form
-
+	
   $('.carousel').carousel({
     interval: 2000
   })
@@ -112,6 +114,11 @@ $(document).ready(function() {
 
 
   $(window).trigger("hashchange");
+  $("#logoutBtn").on("click", function(){
+		$.get("logout.php", function(data){
+			window.location = 'loginform.php';
+		});
+  });
 });
 </script>
 </head>
@@ -136,7 +143,11 @@ $(document).ready(function() {
           <a class="nav-link" href="#edit">Edit Character</a>
         </li>
       </ul>
+
     </div>
+
+      <button id="logoutBtn" class="btn btn-outline-primary"><i class="fas fa-spinner-third"></i>Logout</button>
+    
   </nav>
 
   <div  id ="home_page" class="container center-block" style="display: none">
