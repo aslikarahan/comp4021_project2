@@ -27,6 +27,10 @@ if(!isset($_SESSION['username'])){
     margin-left: auto;
     margin-right: auto;
   }
+  .del-btn{
+	 display:block;
+	 margin: 0 auto;
+  }
 </style>
 <script>
 $(document).ready(function() {
@@ -66,13 +70,15 @@ $(document).ready(function() {
       $.getJSON("list.php", function(data) {
         var character = JSON.parse(data);
         $.each(character, function(key) {
-          html += "<div class='row'><div class='col'>";
-          html += "<div><strong>Name: </strong>"+character[key].name+"</div>";
-          html += "<div><strong>House: </strong>"+character[key].house+"</div>"
-          html += "<div><strong>Status: </strong>"+character[key].status+"</div>"
-          html += "<div><strong>Patronus: </strong>"+character[key].patronus+"</div></div>"
-          html += "<div class='col'>";
-          html += "<div> <img style='height: 300px' src='"+character[key].image+"'></img></div></div></div><br>"
+          html += "<div class='card'>";
+		  html += "<img class='card-img-top' src='"+character[key].image+"' alt='Card image cap'>";
+		  html += "<div class='card-body'>";
+		  html += " <h5 class='card-title'>"+character[key].name+"</h5>";
+          html += "<p><strong>House: </strong>"+character[key].house+"</p>"
+          html += "<p><strong>Status: </strong>"+character[key].status+"</p>"
+          html += "<p><strong>Patronus: </strong>"+character[key].patronus+"</p></div></div>";
+        
+          
         });
         $("#list").html(html);
       });
@@ -99,22 +105,47 @@ $(document).ready(function() {
       $("#list_page").hide();
     }
   });
+   $(document).on('click','.del-btn', function(){
+      var char_key = $(this).attr('id'); 
+	  $.post("delete.php", {id: char_key}, function(data){
+	  var html ="";
+	  var character = JSON.parse(data);
+
+      $.each(character, function(key) {
+		  if (key % 3 == 1) html += "<div class='row'>";
+		  html += "<div class='col' style='padding: 1em'>"
+		  html += "<div class='card char-card' style='width: 20rem;'>";
+		  html += "<img class='card-img-top' src='"+character[key].image+"' alt='Card image cap'>";
+		  html += "<div class='card-body'>";
+		  html += " <h5 class='card-title'>"+character[key].name+"</h5><hr>";
+          html += "<p style='margin-bottom: 0'><strong>House: </strong>"+character[key].house+"</p>"
+          html += "<p style='margin-bottom: 0'><strong>Status: </strong>"+character[key].status+"</p>"
+          html += "<p style='margin-bottom: 0'><strong>Patronus: </strong>"+character[key].patronus+"</p>";
+		  html += "<br><button id='"+key+"' class='del-btn btn btn-outline-dark'>Delete this character</button></div></div></div>";
+		  if (key % 3 == 0) html += "</div>"
+      });
+      $("#list").html(html);
+	  });
+   });
   $("#listForm select").on("change", function() {
     var query = $("#listForm").serialize();
-    console.log(query);
     $.get("list.php", query, function(data) {
       var html ="";
 
       var character = JSON.parse(data);
 
       $.each(character, function(key) {
-        html += "<div class='row'><div class='col'>";
-        html += "<div><strong>Name: </strong>"+character[key].name+"</div>";
-        html += "<div><strong>House: </strong>"+character[key].house+"</div>"
-        html += "<div><strong>Status: </strong>"+character[key].status+"</div>"
-        html += "<div><strong>Patronus: </strong>"+character[key].patronus+"</div></div>"
-        html += "<div class='col'>";
-        html += "<div> <img style='height: 300px' src='"+character[key].image+"'></img></div></div></div><br>"
+		  if (key % 3 == 1) html += "<div class='row'>";
+		  html += "<div class='col' style='padding: 1em'>"
+		  html += "<div class='card char-card' style='width: 20rem;'>";
+		  html += "<img class='card-img-top' src='"+character[key].image+"' alt='Card image cap'>";
+		  html += "<div class='card-body'>";
+		  html += " <h5 class='card-title'>"+character[key].name+"</h5><hr>";
+          html += "<p style='margin-bottom: 0'><strong>House: </strong>"+character[key].house+"</p>"
+          html += "<p style='margin-bottom: 0'><strong>Status: </strong>"+character[key].status+"</p>"
+          html += "<p style='margin-bottom: 0'><strong>Patronus: </strong>"+character[key].patronus+"</p>";
+		  html += "<br><button id='"+key+"' class='del-btn btn btn-outline-dark'>Delete this character</button></div></div></div>";
+		  if (key % 3 == 0) html += "</div>"
       });
       $("#list").html(html);
     })
