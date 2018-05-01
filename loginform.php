@@ -1,6 +1,6 @@
 <?php
 if(isset($_COOKIE['username'])) {
-   header("Location: add.html");
+   header("Location: index.php");
    exit;
 } 
 ?>
@@ -29,7 +29,7 @@ if(isset($_COOKIE['username'])) {
 		$.post("login.php", query, function(data) {
 			console.log(query);
 			if (data.status == "success"){
-				window.location = "add.html";
+				window.location = "index.php";
 			}else{
 				$("#error-text").html('<i class="fas fa-exclamation-triangle"></i>&nbsp;' + data.message);
 				$("#error-text").show();

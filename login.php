@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $users = file_get_contents("users.json");
 $users = json_decode($users, true);

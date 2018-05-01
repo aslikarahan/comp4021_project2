@@ -1,10 +1,8 @@
 <?php
 session_start();
-if(!isset($_COOKIE['username']) || !isset($_SESSION['username']) ) {
-   header("Location: loginform.php");
-   exit;
-}else if(!isset($_SESSION['username'])){
-	$_SESSION["username"] = $_COOKIE["username"];
+if(!isset($_SESSION['username'])){
+	   header("Location: loginform.php");
+		exit;
 }
 ?>
 <!DOCTYPE html>
