@@ -1,19 +1,16 @@
 <?php
 session_start();
 if(isset($_COOKIE['username'])) {
-	error_log("have cookie");
 	if (!isset($_SESSION['username'])){
-		error_log("don't have session");
 		$_SESSION['username'] = $_COOKIE['username'];
 	}
    header("Location: index.php");
    exit;
-}
+} 
 if(isset($_SESSION['username'])){
 	 header("Location: index.php");
 	 exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,8 +19,10 @@ if(isset($_SESSION['username'])){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./datepicker.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="./datepicker.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <style>
 	body{
@@ -32,27 +31,24 @@ if(isset($_SESSION['username'])){
   </style>
   <script>
 	$(document).ready(function() {
-		$("#formLogin").on("submit", function() {
+		$('[data-toggle="datepicker"]').datepicker();
+		$("#formReg").on("submit", function() {
 			//console.log("login");
-  
+	
     // AJAX submit the form
-		var query = $("#formLogin").serialize();
-		$.post("login.php", query, function(data) {
-			console.log(query);
-			if (data.status == "success"){
+		var query = $("#formReg").serialize();
+		$.post("userregister.php", query, function(data) {
+			if(data.status == "success"){
 				window.location = "index.php";
 			}else{
-				$("#error-text").html('<i class="fas fa-exclamation-triangle"></i>&nbsp;' + data.message);
-				$("#error-text").show();
-				
+				$('#error-text').html('<i class="fas fa-exclamation-triangle"></i>&nbsp;' + data.message);
+				$('#error-text').show();
 			}
-		},"json");
 
+		},"json");
 			return false;
 		});
-		$('#regBtn').on("click", function(){
-			window.location="register.php";
-		});
+	
 	});
   </script>
 </head>
@@ -67,32 +63,54 @@ if(isset($_SESSION['username'])){
                     <!-- form card login -->
                     <div class="card rounded-0">
                         <div class="card-header">
-                            <h3 class="mb-0 text-center">Login</h3>
+                            <h3 class="mb-0 text-center">Register</h3>
                         </div>
                         <div class="card-body">
 							<h2 style="display:none" id="error-text" class="text-danger"></h2>
-                            <form class="form" id="formLogin">
+                            <form class="form" id="formReg">
+								
                                 <div class="form-group">
                                     <label for="uname1">Username</label>
                                     <input type="text" class="form-control form-control-lg rounded-0" name="username" id="username" required>
-                                    <div class="invalid-feedback">Oops, you missed this one.</div>
+                                </div>
+								<div class="form-group">
+                                    <label for="uname1">Name</label>
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="name" id="name" required>
+                                </div>
+								<div class="form-group">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" class="form-control form-control-lg rounded-0" name="email" id="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" id="pwd" name="password" autocomplete="new-password" required>
-                                    <div class="invalid-feedback">Enter your password too!</div>
+                                    <input type="password" class="form-control form-control-lg rounded-0" id="pwd" name="password" required>
                                 </div>
-                                <div class="form-group form-check">
-                                    <label class="form-check-label">
-                                       <input class="form-check-input" name="rmbme" type="checkbox">
-									   &nbsp;Remember me
-                                    </label>
+								 <div class="form-group">
+                                    <label>Birthday</label><br>
+                                    <!--<input type="text" class="form-control form-control-lg rounded-0" id="birthday" name="birthday" required>!-->
+									<input name="birthday" data-toggle="datepicker">
+									
                                 </div>
-                                <button type="submit" class="btn btn-primary" style="display:block;margin: 0 auto;" id="btnLogin"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</button>
+								<div class="form-group">
+                                    <label>Gender</label>&nbsp;
+                                    <div class="form-check form-check-inline">
+									  <input class="form-check-input" type="radio" name="gender" id="gender1" value="M" checked>
+									  <label class="form-check-label" for="exampleRadios1">
+										Male
+									  </label>
+									</div>
+									 <div class="form-check form-check-inline">
+									  <input class="form-check-input" type="radio" name="gender" id="gender2" value="F">
+									  <label class="form-check-label" for="exampleRadios1">
+										Female
+									  </label>
+									</div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" style="display:block;margin: 0 auto;" id="btnLogin"><i class="fas fa-sign-in-alt"></i>&nbsp;Register</button>
                             </form>
-							<hr>
-							<p class="text-center">Don't have an account?</p>
-							<button id="regBtn" class="btn btn-info" style="display:block;margin: 0 auto;">Register</button>
+							
+							
                         </div>
                         <!--/card-block-->
                     </div>
