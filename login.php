@@ -10,7 +10,7 @@ if (array_key_exists($_POST["username"], $users))  {
 		$output["message"] = "Login Success";
 		$_SESSION["username"] = $_POST["username"];
 		if (isset($_POST['rmbme']) && $_POST['rmbme'] == 'on'){
-			setcookie ("username",$_POST["username"],time()+ (60 * 60));
+			setcookie ("username",$_POST["username"],time()+ (60 * 60),'/');
 		}
 		
 	} else {

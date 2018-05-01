@@ -1,5 +1,10 @@
 <?php
 if(isset($_COOKIE['username'])) {
+	error_log("have cookie");
+	if (!isset($_SESSION['username'])){
+		error_log("don't have session");
+		$_SESSION['username'] = $_COOKIE['username'];
+	}
    header("Location: index.php");
    exit;
 } 
