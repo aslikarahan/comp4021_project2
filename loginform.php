@@ -24,6 +24,7 @@ if(isset($_SESSION['username'])){
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <style>
 	body{
@@ -82,6 +83,7 @@ if(isset($_SESSION['username'])){
                                     <input type="password" class="form-control form-control-lg rounded-0" id="pwd" name="password" autocomplete="new-password" required>
                                     <div class="invalid-feedback">Enter your password too!</div>
                                 </div>
+								<div class="g-recaptcha" data-sitekey="6Ld5qFYUAAAAABjA489txCOBs5omP9rdhpHw9C7O"></div><br>
                                 <div class="form-group form-check">
                                     <label class="form-check-label">
                                        <input class="form-check-input" name="rmbme" type="checkbox">
