@@ -2,9 +2,15 @@
     "almen1996": {
         "name": "Almen Wong",
         "email": "almen1996@yahoo.com.hk",
-		"gender": "F",
-		 "birthday": "16/08/1996",
-		"password": "081696almen"
-       
+        "gender": "F",
+        "birthday": "16\/08\/1996",
+        "password": "081696almen"
+    },
+    "aaa": {
+        "name": "aaa",
+        "email": "aaa@aaa.com",
+        "gender": "M",
+        "birthday": "05\/16\/2018",
+        "password": "1111"
     }
 }

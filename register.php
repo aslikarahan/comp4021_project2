@@ -23,6 +23,7 @@ if(isset($_SESSION['username'])){
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <script src="./datepicker.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <style>
 	body{
@@ -43,6 +44,9 @@ if(isset($_SESSION['username'])){
 			}else{
 				$('#error-text').html('<i class="fas fa-exclamation-triangle"></i>&nbsp;' + data.message);
 				$('#error-text').show();
+				$('html, body').animate({
+					scrollTop: (0)
+				},500);
 			}
 
 		},"json");
@@ -88,7 +92,7 @@ if(isset($_SESSION['username'])){
 								 <div class="form-group">
                                     <label>Birthday</label><br>
                                     <!--<input type="text" class="form-control form-control-lg rounded-0" id="birthday" name="birthday" required>!-->
-									<input name="birthday" data-toggle="datepicker">
+									<input class="form-control form-control-lg " name="birthday" data-toggle="datepicker">
 									
                                 </div>
 								<div class="form-group">
@@ -106,7 +110,7 @@ if(isset($_SESSION['username'])){
 									  </label>
 									</div>
                                 </div>
-
+								<div class="g-recaptcha" data-sitekey="6Ld5qFYUAAAAABjA489txCOBs5omP9rdhpHw9C7O"></div><br>
                                 <button type="submit" class="btn btn-primary" style="display:block;margin: 0 auto;" id="btnLogin"><i class="fas fa-sign-in-alt"></i>&nbsp;Register</button>
                             </form>
 							
