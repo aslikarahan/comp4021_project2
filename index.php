@@ -21,7 +21,7 @@ if(!isset($_SESSION['username'])){
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
+<script src="./jquery.twbsPagination.js"></script>
   <style>
   .center-block {
     display: block;
@@ -36,7 +36,39 @@ if(!isset($_SESSION['username'])){
 <script>
 $(document).ready(function() {
   // Submit the form
-
+  var totalPage = 10;
+  var $pagination = $('#pagination');
+   var defaultOpts = {
+        totalPages: totalPage,
+            visiblePages: 10,
+			first: false,
+			last: false,
+			startPage: 1,
+            onPageClick: function (event, page) {
+                $('.char-col').hide();
+				$('.char-card-'+(page-1)).show();
+				$('html, body').animate({
+					scrollTop: (0)
+				},100);
+    }
+   };
+	$pagination.twbsPagination(defaultOpts);
+    /**$(function () {
+        var obj = $('#pagination').twbsPagination({
+            totalPages: totalPage,
+            visiblePages: 10,
+			first: false,
+			last: false,
+            onPageClick: function (event, page) {
+                $('.char-col').hide();
+				$('.char-card-'+(page-1)).show();
+				$('html, body').animate({
+					scrollTop: (0)
+				},500);
+            }
+        });
+        console.info(obj.data());
+    });**/
   $('.carousel').carousel({
     interval: 2000
   })
@@ -89,7 +121,6 @@ $(document).ready(function() {
     }else if (page == "#edit"){
       $("#edit_page").slideDown();
       $("#home_page").hide();
-
       $("#add_page").hide();
       $("#list_page").hide();
     }else if((page == "#")){
@@ -106,15 +137,15 @@ $(document).ready(function() {
       $("#list_page").hide();
     }
   });
-   $(document).on('click','.del-btn', function(){
-      var char_key = $(this).attr('id'); 
-	  $.post("delete.php", {id: char_key}, function(data){
-	  var html ="";
-	  var character = JSON.parse(data);
+  function processData(data){
+	        var html ="";
 
+      var character = JSON.parse(data);
+	
       $.each(character, function(key) {
+		  console.log(key);
 		  if (key % 3 == 1) html += "<div class='row'>";
-		  html += "<div class='col' style='padding: 1em'>"
+		  html += "<div class='col char-col char-card-"+parseInt((key-1)/6)+"' style=' display: none; padding: 1em'>"
 		  html += "<div class='card char-card' style='width: 20rem;'>";
 		  html += "<img class='card-img-top' src='"+character[key].image+"' alt='Card image cap'>";
 		  html += "<div class='card-body'>";
@@ -124,31 +155,37 @@ $(document).ready(function() {
           html += "<p style='margin-bottom: 0'><strong>Patronus: </strong>"+character[key].patronus+"</p>";
 		  html += "<br><button id='"+key+"' class='del-btn btn btn-outline-dark'>Delete this character</button></div></div></div>";
 		  if (key % 3 == 0) html += "</div>"
+		 
       });
+	  $("#total").text("Total: " + Object.keys(character).length);
+	 totalPage = Object.keys(character).length/6;
+	 if (Object.keys(character).length%6){
+		 totalPage ++;
+	 }
       $("#list").html(html);
-	  });
+	  $pagination.twbsPagination('destroy');
+	  $pagination.twbsPagination($.extend({}, defaultOpts, {
+                startPage: 1,
+                totalPages: totalPage
+            }));
+	$('html, body').animate({
+			scrollTop: (0)
+		},100);
+  }
+   $(document).on('click','.del-btn', function(){
+      var char_key = $(this).attr('id'); 
+	  $.post("delete.php", {id: char_key}, function(data){
+		processData(data);
+    })
+    .fail(function() {
+      alert("Unknown error!");
+    });
+
    });
   $("#listForm select").on("change", function() {
     var query = $("#listForm").serialize();
     $.get("list.php", query, function(data) {
-      var html ="";
-
-      var character = JSON.parse(data);
-
-      $.each(character, function(key) {
-		  if (key % 3 == 1) html += "<div class='row'>";
-		  html += "<div class='col' style='padding: 1em'>"
-		  html += "<div class='card char-card' style='width: 20rem;'>";
-		  html += "<img class='card-img-top' src='"+character[key].image+"' alt='Card image cap'>";
-		  html += "<div class='card-body'>";
-		  html += " <h5 class='card-title'>"+character[key].name+"</h5><hr>";
-          html += "<p style='margin-bottom: 0'><strong>House: </strong>"+character[key].house+"</p>"
-          html += "<p style='margin-bottom: 0'><strong>Status: </strong>"+character[key].status+"</p>"
-          html += "<p style='margin-bottom: 0'><strong>Patronus: </strong>"+character[key].patronus+"</p>";
-		  html += "<br><button id='"+key+"' class='del-btn btn btn-outline-dark'>Delete this character</button></div></div></div>";
-		  if (key % 3 == 0) html += "</div>"
-      });
-      $("#list").html(html);
+		processData(data);
     })
     .fail(function() {
       alert("Unknown error!");
@@ -219,7 +256,7 @@ $(document).ready(function() {
 
   <div  id ="add_page" class="container" style="display: none">
     <h2>Add Character</h2>
-    <form id="add_form" >
+    <form id="add_form">
       <div class="form-group" display="None">
         <label for="name">Name:</label>
         <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
@@ -281,7 +318,9 @@ $(document).ready(function() {
         <option value = "Muggle">Muggle</option>
       </select>
     </form>
+	<p id="total"><p>
     <div id="list"></div>
+	<ul class="pagination" id="pagination"></ul>
   </div>
 
   <div  id ="edit_page" class="container" style="display: none">
