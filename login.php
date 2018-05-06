@@ -6,8 +6,13 @@ $users = json_decode($users, true);
 $response = $_POST['g-recaptcha-response'];
 $secret = "6Ld5qFYUAAAAAOkCx7jXPV6yVDOVHbeRTa27v3fs";
 $url = "https://www.google.com/recaptcha/api/siteverify";
-
-$verify = file_get_contents($url."?secret=".$secret."&response=".$response);
+$arrContextOptions=array(
+    "ssl"=>array(
+        "verify_peer"=>false,
+        "verify_peer_name"=>false,
+    ),
+); 
+$verify = file_get_contents($url."?secret=".$secret."&response=".$response, false, stream_context_create($arrContextOptions));
 $verify = json_decode($verify, true);
 if (!$verify['success']){
 	$output["status"] = "error";

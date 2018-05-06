@@ -10,6 +10,8 @@ foreach($char as $key=>$data){
 	}
 }
 ksort($char);
+if ($_POST['id'] <= max(array_keys($char))){
 array_pop($char);
+}
 file_put_contents("char.json", json_encode($char, JSON_PRETTY_PRINT));
 print  json_encode($char, JSON_PRETTY_PRINT);

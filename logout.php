@@ -8,3 +8,4 @@ if (isset($_COOKIE['username'])){
 if (isset($_SESSION['username']))
 unset($_SESSION['username']);
 
+print json_encode("success");

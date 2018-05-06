@@ -21,14 +21,14 @@ if(!isset($_SESSION['username'])){
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="./jquery.twbsPagination.js"></script>
+<script src="./lib/jquery.twbsPagination.js"></script>
   <style>
   .center-block {
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
-  .del-btn{
+  .del-btn, .edit-btn{
 	 display:block;
 	 margin: 0 auto;
   }
@@ -37,6 +37,7 @@ if(!isset($_SESSION['username'])){
 $(document).ready(function() {
   // Submit the form
   var totalPage = 10;
+  var editCharacter = {};
   var $pagination = $('#pagination');
    var defaultOpts = {
         totalPages: totalPage,
@@ -72,7 +73,9 @@ $(document).ready(function() {
   $('.carousel').carousel({
     interval: 2000
   })
-
+  $("#back-to-list").on("click",function(){
+	 window.location.hash = "#list"; 
+  });
   $("#add_form").on("submit", function() {
     // AJAX submit the form
     var query = $("#add_form").serialize();
@@ -80,6 +83,21 @@ $(document).ready(function() {
       if (data == "success"){
         $("#add_form").hide();
         $("#success_text").show();
+		$("#add_form")[0].reset();
+      }
+    }, "json");
+
+    return false;
+  });
+  
+    $("#edit_form").on("submit", function() {
+    // AJAX submit the form
+    var query = $("#edit_form").serialize();
+    $.post("edit.php", query, function(data) {
+      if (data == "success"){
+		$("#edit_form").hide();
+        $("#success_edit_text").show();
+		
       }
     }, "json");
 
@@ -90,9 +108,13 @@ $(document).ready(function() {
 
 
   $(window).on('hashchange', function() {
+	
     // Get the fragment identifier from the URL
     var page = window.location.hash;
     if (page == "#add"){
+		$("#add_form").show();
+        $("#success_text").hide();
+		
       $("#add_page").slideDown();
       $("#home_page").hide();
       $("#list_page").hide();
@@ -101,28 +123,29 @@ $(document).ready(function() {
       $("#list_page").slideDown();
       var html ="";
       $.getJSON("list.php", function(data) {
-        var character = JSON.parse(data);
-        $.each(character, function(key) {
-          html += "<div class='card'>";
-		  html += "<img class='card-img-top' src='"+character[key].image+"' alt='Card image cap'>";
-		  html += "<div class='card-body'>";
-		  html += " <h5 class='card-title'>"+character[key].name+"</h5>";
-          html += "<p><strong>House: </strong>"+character[key].house+"</p>"
-          html += "<p><strong>Status: </strong>"+character[key].status+"</p>"
-          html += "<p><strong>Patronus: </strong>"+character[key].patronus+"</p></div></div>";
-        
-          
-        });
-        $("#list").html(html);
-      });
+			processData(data);    
+        },"json");
+
       $("#home_page").hide();
       $("#add_page").hide();
       $("#edit_page").hide();
     }else if (page == "#edit"){
+		 
+	    $("#edit_form").show();
+        $("#success_edit_text").hide();
+		if( !editCharacter.name){
+			window.location.hash = "#list";
+		}
       $("#edit_page").slideDown();
       $("#home_page").hide();
       $("#add_page").hide();
       $("#list_page").hide();
+	  $("#id-edit").val(editCharacter.id);
+	  $("#name-edit").val(editCharacter.name);
+	  $("#house-edit").val(editCharacter.house);
+	  $("#status-edit").val(editCharacter.status);
+	  $("#patronus-edit").val(editCharacter.patronus);
+	  $("#image-edit").val(editCharacter.image);
     }else if((page == "#")){
       $("#home_page").show();
 
@@ -140,10 +163,9 @@ $(document).ready(function() {
   function processData(data){
 	        var html ="";
 
-      var character = JSON.parse(data);
+      var character = (data);
 	
       $.each(character, function(key) {
-		  console.log(key);
 		  if (key % 3 == 1) html += "<div class='row'>";
 		  html += "<div class='col char-col char-card-"+parseInt((key-1)/6)+"' style=' display: none; padding: 1em'>"
 		  html += "<div class='card char-card' style='width: 20rem;'>";
@@ -153,6 +175,7 @@ $(document).ready(function() {
           html += "<p style='margin-bottom: 0'><strong>House: </strong>"+character[key].house+"</p>"
           html += "<p style='margin-bottom: 0'><strong>Status: </strong>"+character[key].status+"</p>"
           html += "<p style='margin-bottom: 0'><strong>Patronus: </strong>"+character[key].patronus+"</p>";
+		  html += "<br><button  id='"+key+"' class='edit-btn btn btn-outline-info'>Edit this character</button>";
 		  html += "<br><button id='"+key+"' class='del-btn btn btn-outline-dark'>Delete this character</button></div></div></div>";
 		  if (key % 3 == 0) html += "</div>"
 		 
@@ -176,17 +199,25 @@ $(document).ready(function() {
       var char_key = $(this).attr('id'); 
 	  $.post("delete.php", {id: char_key}, function(data){
 		processData(data);
-    })
-    .fail(function() {
-      alert("Unknown error!");
+    },"json");
+   });
+	
+	 $(document).on('click','.edit-btn', function(){
+		 var char_key = $(this).attr('id'); 
+		$.getJSON("getChar.php", {id: char_key}, function(data){
+			console.log(data);
+			editCharacter = (data);
+			window.location.hash = "#edit";
+		},"json");
+    
     });
 
-   });
+   
   $("#listForm select").on("change", function() {
     var query = $("#listForm").serialize();
-    $.get("list.php", query, function(data) {
+    $.getJSON("list.php", query, function(data) {
 		processData(data);
-    })
+    },"json")
     .fail(function() {
       alert("Unknown error!");
     });
@@ -198,7 +229,8 @@ $(document).ready(function() {
   $("#logoutBtn").on("click", function(){
 		$.get("logout.php", function(data){
 			window.location = 'loginform.php';
-		});
+			$editCharacter = data;
+		},"json");
   });
 });
 </script>
@@ -223,9 +255,7 @@ $(document).ready(function() {
         <li class="nav-item">
           <a class="nav-link" href="#add">Add Some Magic</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#edit">Edit Character</a>
-        </li>
+
       </ul>
 
     </div>
@@ -325,7 +355,46 @@ $(document).ready(function() {
 
   <div  id ="edit_page" class="container" style="display: none">
     <h2>Edit Character</h2>
-    <p> ipsum lolzi lolzi lolzi akjdhkjahsd<p>
+    
+	<form id="edit_form">
+	<input type="hidden" class="form-control" id="id-edit"  name="id">
+      <div class="form-group" display="None">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name-edit" value="" placeholder="Enter name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="house">House: </label>
+        <select class="form-control"  id="house-edit" placeholder="Select house" name="house">
+          <option value = "Gryffindor">Gryffindor</option>
+          <option value = "Slytherin">Slytherin</option>
+          <option value = "Hufflepuff">Hufflepuff</option>
+          <option value = "Ravenclaw">Ravenclaw</option>
+          <option value = "-">None</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="status">Status: </label>
+        <select class="form-control"  id="status-edit" placeholder="Enter status" name="status" required>
+          <option value = "Pure Blood">Pure Blood</option>
+          <option value = "Half Blood">Half Blood</option>
+          <option value = "Muggle Born">Muggle Born</option>
+          <option value = "Muggle">Muggle</option>
+          <option value = "-">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="patronus">Patronus: </label>
+        <input type="text" class="form-control" id="patronus-edit" placeholder="Enter patronus" name="patronus">
+      </div>
+      <div class="form-group">
+        <label for="image">Image: </label>
+        <input type="text" class="form-control" id="image-edit" placeholder="Enter image" name="image">
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+	<h1 id="success_edit_text" style="display:none;color: green;">Saved!</h1>
+	<button style="margin-top: 5px;" id="back-to-list" class="btn btn-outline-primary">Back to List</button>
     </div>
 
 

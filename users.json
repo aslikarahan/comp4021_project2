@@ -6,11 +6,11 @@
         "birthday": "16\/08\/1996",
         "password": "081696almen"
     },
-    "aaa": {
-        "name": "aaa",
-        "email": "aaa@aaa.com",
+    "test": {
+        "name": "test",
+        "email": "test@test.com",
         "gender": "M",
-        "birthday": "05\/16\/2018",
-        "password": "1111"
+        "birthday": "05\/11\/2018",
+        "password": "test"
     }
 }
