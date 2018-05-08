@@ -181,9 +181,9 @@ html += "<div class='row'>";
           html += "<p style='margin-bottom: 0'><strong>Patronus: </strong>"+character[key].patronus+"</p>";
 					html += "<p style='margin-bottom: 0'><strong>Description: </strong>"+character[key].description+"</p>";
 
-		  html += "<br><button  id='"+key+"' class='edit-btn btn btn-outline-info'>Edit this character</button>";
-		  html += "<br><button id='"+key+"' class='del-btn btn btn-outline-dark'>Delete this character</button></div></div></div>";
-		 
+		  html += "<br><button  id='"+character[key].name+"' class='edit-btn btn btn-outline-info'>Edit this character</button>";
+		  html += "<br><button id='"+character[key].name+"' class='del-btn btn btn-outline-dark'>Delete this character</button></div></div></div>";
+
 
       });
 	   html += "</div>"
@@ -204,14 +204,14 @@ html += "<div class='row'>";
   }
    $(document).on('click','.del-btn', function(){
       var char_key = $(this).attr('id');
-	  $.post("delete.php", {id: char_key}, function(data){
+	  $.post("delete.php", {name: char_key}, function(data){
 		processData(data);
     },"json");
    });
 
 	 $(document).on('click','.edit-btn', function(){
 		 var char_key = $(this).attr('id');
-		$.getJSON("getChar.php", {id: char_key}, function(data){
+		$.getJSON("getChar.php", {name: char_key}, function(data){
 			console.log(data);
 			editCharacter = (data);
 			window.location.hash = "#edit";
