@@ -24,7 +24,7 @@ if(!isset($_SESSION['username'])){
 <script src="./lib/jquery.twbsPagination.js"></script>
   <style>
   .center-block {
-    display: block;
+    display: center-block;
     margin-left: auto;
     margin-right: auto;
   }
@@ -32,6 +32,22 @@ if(!isset($_SESSION['username'])){
 	 display:block;
 	 margin: 0 auto;
   }
+	.carousel{
+		align-self: center;
+		margin-bottom: 10px;
+	}
+	.carousel-item{
+		align-self: center;
+		height: 20em;
+		width:auto;
+
+
+	}
+	.carousel-item img{
+		height: 20em;
+		width:auto;
+	}
+
 </style>
 <script>
 $(document).ready(function() {
@@ -133,13 +149,14 @@ $(document).ready(function() {
       $("#list_page").hide();
       $("#edit_page").hide();
     }else if(page == "#list"){
+			$("#home_page").hide();
+
       $("#list_page").slideDown();
       var html ="";
       $.getJSON("search.php", function(data) {
 			processData(data);
         },"json");
 
-      $("#home_page").hide();
       $("#add_page").hide();
       $("#edit_page").hide();
     }else if (page == "#edit"){
@@ -149,8 +166,8 @@ $(document).ready(function() {
 		if( !editCharacter.name){
 			window.location.hash = "#list";
 		}
+		$("#home_page").show();
       $("#edit_page").slideDown();
-      $("#home_page").hide();
       $("#add_page").hide();
       $("#list_page").hide();
 	  $("#id-edit").val(editCharacter.id);
@@ -166,13 +183,13 @@ $(document).ready(function() {
 
       $("#edit_page").hide();
       $("#add_page").hide();
-      $("#list_page").hide();
+      $("#list_page").show();
     }else{
       $("#home_page").show();
 
       $("#edit_page").hide();
       $("#add_page").hide();
-      $("#list_page").hide();
+      $("#list_page").show();
     }
   });
   function processData(data){
@@ -291,16 +308,16 @@ html += "<div class='row'>";
     <div  class="carousel slide" data-ride="carousel" >
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-75" src="img\/c1.jpg" alt="First slide">
+          <img class="d-block   md-12" src="img\/c1.jpg" alt="First slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-75" src="img\/c2.jpg" alt="Second slide">
+          <img class="d-block   md-12" src="img\/c2.jpg" alt="Second slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-75" src="img\/c3.jpg" alt="Third slide">
+          <img class="d-block   md-12" src="img\/c3.jpg" alt="Third slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-75" src="img\/c4.jpeg" alt="Fourth slide">
+          <img class="d-block   md-12" src="img\/c4.jpeg" alt="Fourth slide">
         </div>
       </div>
     </div>

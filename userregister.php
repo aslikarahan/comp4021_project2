@@ -24,6 +24,8 @@ if (!$verify['success']){
 		$users[$_POST['username']]["gender"] = $_POST["gender"];
 		$users[$_POST['username']]["birthday"] =$_POST["birthday"];
 		$users[$_POST['username']]["password"] = $_POST["password"];
+    $users[$_POST['username']]["image"] = "userpp\/default.png";
+
 		file_put_contents("users.json", json_encode($users, JSON_PRETTY_PRINT));
 		$output["status"] = "success";
 		$output["message"] = "register success";
