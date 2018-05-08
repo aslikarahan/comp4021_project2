@@ -10,21 +10,21 @@ if(isset($_GET["status"])){
 $temp;
 $count=1;
 if(isset($house) && $house!=null &&isset($status) && $status!=null){
-  for ($x = 1; $x < max(array_keys($char)); $x++) {
+  for ($x = 1; $x < = max(array_keys($char)); $x++) {
     if($char[$x]["house"]==$house && $char[$x]["status"]==$status){
       $temp[$count]=$char[$x];
       $count++;
     }
   }
 }else if(isset($house) && isset($status) && $house!=null && $status==null){
-  for ($x = 1; $x < max(array_keys($char)); $x++) {
+  for ($x = 1; $x <=  max(array_keys($char)); $x++) {
     if($char[$x]["house"]==$house){
       $temp[$count]=$char[$x];
       $count++;
     }
   }
 }else if(isset($house) && isset($status) && $house==null && $status!=null){
-  for ($x = 1; $x < max(array_keys($char)); $x++) {
+  for ($x = 1; $x <=  max(array_keys($char)); $x++) {
     if($char[$x]["status"]==$status){
       $temp[$count]=$char[$x];
       $count++;
