@@ -259,7 +259,7 @@ html += "<div class='row'>";
           <a class="nav-link" href="#home"><i class="fas fa-home"></i>&nbsp;Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#list">List the Magic</a>
+          <a class="nav-link" href="#list">Experience the Magic</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#add">Add Some Magic</a>
