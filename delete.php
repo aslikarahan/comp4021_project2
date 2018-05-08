@@ -4,13 +4,13 @@ $char = json_decode($char, true);
 
 $name = $_POST['name'];
 
-for ($x = 1; $x < max(array_keys($char)); $x++) {
+for ($x = 1; $x <= max(array_keys($char)); $x++) {
   if($char[$x]['name']==$name){
     $result=$char[$x];
     $result['id'] = $x;
   }
 }
-$id=$result['id'];
+$id = $result['id'];
 unset($char[$id]);
 
 foreach($char as $key=>$data){
