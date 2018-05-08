@@ -75,7 +75,7 @@ $(document).ready(function() {
   })
   $("#back-to-list").on("click",function(){
 	 window.location.hash = "#list";
-	 $("#listForm select").trigger("change");
+	 // $("#listForm select").trigger("change");
 
   });
   $("#add_form").on("submit", function() {
@@ -222,7 +222,7 @@ html += "<div class='row'>";
     });
 
 
-  $("#listForm select").on("change", function() {
+  $("#listForm").on("change", function() {
     var query = $("#listForm").serialize();
     $.getJSON("search.php", query, function(data) {
 		processData(data);
@@ -232,17 +232,10 @@ html += "<div class='row'>";
     });
   });
 
-	$("#listForm select").trigger("change");
+	 $("#listForm select").trigger("change");
 	$("#search-button").on("click",function(){
-		var query = $("#listForm").serialize();
-		$.getJSON("search.php", query, function(data) {
-		processData(data);
-		},"json")
-		.fail(function() {
-			alert("Unknown error!");
-		});
+//
 	});
-
   $(window).trigger("hashchange");
 
   $("#logoutBtn").on("click", function(){
@@ -371,7 +364,7 @@ html += "<div class='row'>";
       </select>
 
 			<input class="form-control mr-sm-2" type="search" id="search-element" placeholder="Search" name="search" aria-label="Search">
-			<button class="btn btn-outline-success my-1 my-sm-0" id="search-button" type="submit">Search for Magic</button>
+			<input type="button" class="btn btn-primary btnSeccion" id="btnSeccion3" value="Search"/>
 
     </form>
 
