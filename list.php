@@ -34,7 +34,10 @@ if(isset($house) && $house!=null &&isset($status) && $status!=null){
   $temp= $char;
 }
 
+/*if (empty($temp)){
+	$temp= $char;
 
+}*/
 $temp= json_encode($temp, JSON_PRETTY_PRINT);
 print ($temp);
 
