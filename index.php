@@ -75,6 +75,8 @@ $(document).ready(function() {
   })
   $("#back-to-list").on("click",function(){
 	 window.location.hash = "#list";
+	 $("#listForm select").trigger("change");
+
   });
   $("#add_form").on("submit", function() {
     // AJAX submit the form
