@@ -224,7 +224,7 @@ html += "<div class='row'>";
 
   $("#listForm select").on("change", function() {
     var query = $("#listForm").serialize();
-    $.getJSON("list.php", query, function(data) {
+    $.getJSON("search.php", query, function(data) {
 		processData(data);
     },"json")
     .fail(function() {
@@ -233,8 +233,18 @@ html += "<div class='row'>";
   });
 
 	$("#listForm select").trigger("change");
+	$("#search-button").on("click",function(){
+		var query = $("#listForm").serialize();
+		$.getJSON("search.php", query, function(data) {
+		processData(data);
+		},"json")
+		.fail(function() {
+			alert("Unknown error!");
+		});
+	});
 
   $(window).trigger("hashchange");
+
   $("#logoutBtn").on("click", function(){
 		$.get("logout.php", function(data){
 			window.location = 'loginform.php';
@@ -353,15 +363,19 @@ html += "<div class='row'>";
 
       </select>
 
-      <label class="my-2 mr-4" for="status">Status</label>
-      <select class="custom-select my-1 mr-sm-2" id="status" name="status">
-        <option selected value ="">All</option>
-        <option value = "Pure Blood">Pure Blood</option>
-        <option value = "Half Blood">Half Blood</option>
-        <option value = "Muggle Born">Muggle Born</option>
-        <option value = "Muggle">Muggle</option>
+      <label class="my-2 mr-4" for="sort">Sort By</label>
+      <select class="custom-select my-1 mr-sm-2" id="sort" name="sort">
+        <option selected value ="">---</option>
+        <option value = "by-name">By Name</option>
+        <option value = "by-patronus">By Patronus</option>
       </select>
+
+			<input class="form-control mr-sm-2" type="search" id="search-element" placeholder="Search" name="search" aria-label="Search">
+			<button class="btn btn-outline-success my-1 my-sm-0" id="search-button" type="submit">Search for Magic</button>
+
     </form>
+
+
 	<p id="total"><p>
     <div id="list"></div>
 	<ul class="pagination" id="pagination"></ul>

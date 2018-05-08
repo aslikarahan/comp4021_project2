@@ -8,14 +8,6 @@
         "description": "The books cover seven years in the life of the orphan who, on his 11th birthday, learns he is a wizard and the son of magical parents Lily and James Potter. He goes to Hogwarts School of Witchcraft and Wizardry to learn magic. He also learns that his fate is connected to Lord Voldemort"
     },
     "2": {
-        "name": "Ron Weasley",
-        "house": "Gryffindor",
-        "status": "Pure Blood",
-        "patronus": "Jack Russell Terrier",
-        "image": "img\/ron.jpg",
-        "description": "He is a red haired child, who comes from a poor background. He wishes he had money. He comes from a big family, with five brothers and one sister. He is Harry Potter's best friend. It is revealed in later books, that Ron is romantically interested in Hermione Granger. The two are married at the end of the series."
-    },
-    "3": {
         "name": "Hermione Granger",
         "house": "Gryffindor",
         "status": "Muggle Born",
@@ -23,7 +15,7 @@
         "image": "img\/hermione.jpg",
         "description": "At the age of eleven she learned that she was a witch, and had been accepted into Hogwarts School of Witchcraft and Wizardry. She began attending Hogwarts in 1991 and was Sorted into Gryffindor House. Hermione possessed a brilliant academic mind, and proved to be a gifted student in almost every subject that she studied."
     },
-    "4": {
+    "3": {
         "name": "Lord Voldemort",
         "house": "Slytherin",
         "status": "Half Blood",
@@ -31,7 +23,7 @@
         "image": "img\/voldemort.jpg",
         "description": "Tom Marvolo Riddle (31 December, 1926 \u2013 2 May, 1998), later (and better) known as Lord Voldemort, was a half-blood wizard considered to have been the most powerful and dangerous dark wizard of all time. Tom Riddle's broken and mutilated soul was then trapped in limbo for eternity, unable to move on to the afterlife."
     },
-    "5": {
+    "4": {
         "name": "Professor Albus Dumbledore",
         "house": "Gryffindor",
         "status": "Half Blood",
@@ -39,7 +31,7 @@
         "image": "img\/dumbledore.jpg",
         "description": "He was the headmaster of Hogwarts School of Witchcraft and Wizardry until his death. He first found Harry when he was a little boy and since then they developed a relationship. Dumbledore is killed by Severus Snape in the sixth book\/movie, after Draco Malfoy failed to do so."
     },
-    "6": {
+    "5": {
         "name": "Professor Severus Snape",
         "house": "Slytherin",
         "status": "Half Blood",
@@ -47,7 +39,7 @@
         "image": "img\/snape.jpg",
         "description": "Snape is the Potions master at Hogwarts in the series. He is also known to be a Death Eater but after Voldemort started hunting Lily Evans, the woman Snape had loved since he was a child, he asked Albus Dumbledore to find a safe place for the Potters because he knew Voldemort wanted to kill their son, Harry Potter."
     },
-    "7": {
+    "6": {
         "name": "Rubeus Hagrid",
         "house": "Gryffindor",
         "status": "Part Human Part Giant",
@@ -55,7 +47,7 @@
         "image": "img\/hagrid.jpg",
         "description": " A teacher and groundskeeper at Hogwarts, the school that Harry Potter attends, Hagrid is a friend of Harry, Ron, and Hermione. Hagrid is also a half-giant. His father was not a giant, whereas his mother, Fridwulfa, who died whilst he was young, was a giantess. He has a half-brother named Grawp."
     },
-    "8": {
+    "7": {
         "name": "Draco Malfoy",
         "house": "Slytherin",
         "status": "Pure Blood",
@@ -63,7 +55,7 @@
         "image": "img\/draco.jpg",
         "description": "Draco Malfoy is the only child of Lucius and Narcissa Malfoy, a member of the Black family, whose cousin is Harry Potter's godfather. In a stage play towards the end of Harry Potter and the Deathly Hallows Part 2, Malfoy is shown to father his one son, Scorpius Malfoy."
     },
-    "9": {
+    "8": {
         "name": "Nymphadora Tonks",
         "house": "Hufflepuff",
         "status": "Half Blood",
@@ -71,7 +63,7 @@
         "image": "img\/tonks.jpg",
         "description": "Tonks is a metamorphmagus, which means that she can change her appearance when she wants to. She works as an Auror in the Ministry of Magic. In Harry Potter and the Deathly Hallows, she marries the werewolf Remus Lupin and they have a son called Teddy Remus Lupin.. Both Tonks and Lupin die during the Battle of Hogwarts."
     },
-    "10": {
+    "9": {
         "name": "Cedric Diggory",
         "house": "Hufflepuff",
         "status": "Pure Blood",
@@ -79,7 +71,7 @@
         "image": "img\/cedric.jpg",
         "description": "During his time at school he was a prefect and captained the Hufflepuff Quidditch team, playing as Seeker. In his sixth year Cedric put his name forward to compete in the Triwizard Tournament. Cedric was murdered by Peter Pettigrew with the Killing Curse, on the order of Lord Voldemort"
     },
-    "11": {
+    "10": {
         "name": "Bellatrix Lestrange",
         "house": "Slytherin",
         "status": "Pure Blood",
@@ -87,7 +79,7 @@
         "image": "img\/bellatrix.jpg",
         "description": "The sister of Narcissa Malfoy, the wife of Lucius Malfoy. She is a death eater who believes that Lord Voldemort is the supreme and everyone should follow him. She has been to Azkaban, the wizard prison, but Lord Voldemort helped her and the other Death Eaters in Azkaban escape. She is killed by Molly Weasley at the end of book 7."
     },
-    "12": {
+    "11": {
         "name": "Professor Minerva McGonagall",
         "house": "Gryffindor",
         "status": "Half Blood",
@@ -95,7 +87,7 @@
         "image": "img\/minerva.jpg",
         "description": "This character is a teacher at the school Hogwarts, and a good character in the series; she helps Harry Potter, the main character, many time in the series. She teaches a subject called transfiguration. All the way at the end of the books, McGonagall becomes the school principle, her honorary title is called Hogwarts Headmistress."
     },
-    "13": {
+    "12": {
         "name": "Professor Dolores Umbridge",
         "house": "Slytherin",
         "status": "Half Blood",
@@ -103,7 +95,7 @@
         "image": "img\/umbridge.jpg",
         "description": "At Hogwarts she had enormous power over the students, teachers, and the curriculum, which she wielded despotically. Her time at Hogwarts was characterised by cruelty and abusive punishments against students, and because of her interfering and condescending ways, she was generally hated by most students and teachers alike"
     },
-    "14": {
+    "13": {
         "name": "Remus Lupin",
         "house": "Gryffindor",
         "status": "Half Blood",
@@ -111,7 +103,7 @@
         "image": "img\/lupin.jpg",
         "description": "Lupin was bitten by a werewolf when he was very young. During his time at Hogwarts, he became good friends with three other boys his age: James Potter, Sirius Black, and Peter Pettigrew. These four came to be known as the Marauders, infamous for their mischievous antics"
     },
-    "15": {
+    "14": {
         "name": "Cho Chang",
         "house": "Ravenclaw",
         "status": "Pure Blood",
@@ -119,7 +111,7 @@
         "image": "img\/cho.jpg",
         "description": "She was a Seeker for the Ravenclaw Quidditch team and a popular student. In Cho's fifth year, she began dating Cedric Diggory. In her sixth year, against her parents' wishes she joined Dumbledore's Army, an organisation taught and led by Harry Potter. In the same year she also began a romantic relationship with Harry."
     },
-    "16": {
+    "15": {
         "name": "Luna Lovegood",
         "house": "Ravenclaw",
         "status": "Pure Blood",
@@ -127,7 +119,7 @@
         "image": "img\/luna.jpg",
         "description": "She is the only child and daughter of Xenophilius and Pandora Lovegood. Her mother accidentally died while experimenting with spells when Luna was nine and Luna was raised by her father, editor of the magazine The Quibbler, in a rook-like house near the village of Ottery St Catchpole in Devon."
     },
-    "17": {
+    "16": {
         "name": "Professor Sybill Trelawney",
         "house": "Ravenclaw",
         "status": "Half Blood",
@@ -135,7 +127,7 @@
         "image": "img\/trelawney.jpg",
         "description": "It was Trelawney herself who made the prophecy concerning Voldemort and the one with the power to vanquish him (Voldemort took this to mean Harry Potter) during her job interview with Albus Dumbledore. She is the great-great-granddaughter of the celebrated Cassandra Trelawney, who was also a Seer."
     },
-    "18": {
+    "17": {
         "name": "Neville Longbottom",
         "house": "Gryffindor",
         "status": "Pure Blood",
@@ -143,7 +135,7 @@
         "image": "img\/neville.jpg",
         "description": "Neville's parents were well-respected Aurors and members of the original Order of the Phoenix, until they were tortured into insanity by Bellatrix Lestrange and 3 other Death Eaters with the Cruciatus Curse when he was about sixteen months old"
     },
-    "19": {
+    "18": {
         "name": "Sirius Black",
         "house": "Gryffindor",
         "status": "Pure Blood",
@@ -151,7 +143,7 @@
         "image": "img\/sirius.jpg",
         "description": "Sirius was sent to Azkaban, and after twelve years became the only known person to escape the prison unassisted by transforming into his Animagus form of a massive black dog often confused with a Grim, an omen said to cause death. Sirius was named the godfather of Harry James Potter"
     },
-    "20": {
+    "19": {
         "name": "James Potter",
         "house": "Gryffindor",
         "status": "Pure Blood",
@@ -159,7 +151,7 @@
         "image": "img\/james.jpg",
         "description": "He married Lily and together they had a son, Harry James Potter. James, Lily, and their friends all fought in the First Wizarding War as members of the Order of the Phoenix; he and his wife defied Lord Voldemort three times. James and Lily were ultimately betrayed to Voldemort by one of their close friends"
     },
-    "21": {
+    "20": {
         "name": "Peter Pettigrew",
         "house": "Gryffindor",
         "status": "Half Blood",
@@ -167,7 +159,7 @@
         "image": "img\/peter.jpg",
         "description": "During the First Wizarding War, Peter was a member of the Order of the Phoenix, but became a spy when he defected to Lord Voldemort. He was made Secret-Keeper for the Potters when they went into hiding with the use of the Fidelius Charm, and betrayed James, his wife Lily, and their son Harry to Lord Voldemort"
     },
-    "22": {
+    "21": {
         "name": "Ginny Weasley",
         "house": "Gryffindor",
         "status": "Pure Blood",
@@ -175,7 +167,7 @@
         "image": "img\/ginny.jpg",
         "description": "The first female to be born into the Weasley line for several generations. She and her older brothers grew up in the Burrow on the outskirts of Ottery St Catchpole in Devon. During her first year, she developed a long-standing crush on Harry Potter. Also during her first year, she came under the influence of Tom Riddle."
     },
-    "23": {
+    "22": {
         "name": "Arthur Weasley",
         "house": "Gryffindor",
         "status": "Pure Blood",
@@ -183,7 +175,7 @@
         "image": "img\/arthur.jpg",
         "description": "Wizard in the employ of the Ministry of Magic, as well as a member of the second Order of the Phoenix. He was a staunch believer in the equality of all magical and Muggle folk and was the head of the Weasley family He has a laid-back personality"
     },
-    "24": {
+    "23": {
         "name": "Fred Weasley",
         "house": "Gryffindor",
         "status": "Pure Blood",
@@ -191,7 +183,7 @@
         "image": "img\/fred.jpg",
         "description": "Both he and his twin brother were popular students, known for their sense of humour, pranks, and were also Beaters for the Gryffindor Quidditch team. In their seventh year, they joined Dumbledore's Army, an organisation taught and led by Harry Potter. While fighting alongside his brother, Percy, he was killed in an explosion."
     },
-    "25": {
+    "24": {
         "name": "George Weasley",
         "house": "Gryffindor",
         "status": "Pure Blood",
@@ -199,7 +191,7 @@
         "image": "img\/george.jpg",
         "description": "A born prankster and inventor, George left Hogwarts prior to graduation to become a successful entrepreneur, alongside his twin brother, and opened the joke shop Weasleys' Wizard Wheezes at 93 Diagon Alley. George never truly got over Fred's death, but he eventually married Angelina Johnson, and named his first child Fred"
     },
-    "26": {
+    "25": {
         "name": "Molly Weasley",
         "house": "Gryffindor",
         "status": "Pure Blood",
@@ -207,7 +199,7 @@
         "image": "img\/molly.jpg",
         "description": "Sometime after she graduated, both her brothers were murdered by Death Eaters in the First Wizarding War. Molly and Arthur had seven children; Bill, Charlie, Percy, Fred, George, Ron, and Ginny Weasley. Molly played a large part in the life of Harry Potter, acting as a motherly figure towards him."
     },
-    "27": {
+    "26": {
         "name": "Lily Potter",
         "house": "Gryffindor",
         "status": "Muggle Born",
