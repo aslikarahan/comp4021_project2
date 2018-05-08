@@ -22,6 +22,7 @@ if(!isset($_SESSION['username'])){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="./lib/jquery.twbsPagination.js"></script>
+
   <style>
   .center-block {
     display: center-block;
@@ -47,11 +48,29 @@ if(!isset($_SESSION['username'])){
 		height: 20em;
 		width:auto;
 	}
+	#profile-pic{
+		height:80px;
+		border-radius: 40px;
+		margin-right: 10px;
+		background: lightgrey;
+	}
 
 </style>
+
+
 <script>
+
+
 $(document).ready(function() {
-  // Submit the form
+var username = <?php echo json_encode($_SESSION['username']) ?>;
+var query= "username="+username;
+$.getJSON("userProfilePicture.php", query, function(data) {
+$("#profile-pic").attr("src",data);
+},"json")
+.fail(function() {
+	alert("Unknown error!");
+});
+
   var totalPage = 10;
   var editCharacter = {};
   var $pagination = $('#pagination');
@@ -89,9 +108,11 @@ $(document).ready(function() {
   $('.carousel').carousel({
     interval: 2000
   })
+
+
   $("#back-to-list").on("click",function(){
 	 window.location.hash = "#list";
-	 // $("#listForm select").trigger("change");
+	 $("#listForm").trigger("change");
 
   });
   $("#add_form").on("submit", function() {
@@ -276,21 +297,21 @@ html += "<div class='row'>";
 </script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" >
 
     <a class="navbar-brand" href="#">
-      <img border="0" src="img/logo.png" height="75">
+      <img border="0" src="img/logo.png" height="100">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarNav" margin-bottom="100px">
       <ul class="navbar-nav">
 		<li class="nav-item active">
           <a class="nav-link" href="#home"><i class="fas fa-home"></i>&nbsp;Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#list">Experience the Magic</a>
+          <a class="nav-link" href="#list">Just the List</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#add">Add Some Magic</a>
@@ -299,7 +320,7 @@ html += "<div class='row'>";
       </ul>
 
     </div>
-
+		<img id="profile-pic" src="" alt="">
       <button id="logoutBtn" class="btn btn-outline-primary"><i class="fas fa-spinner-third"></i>Logout</button>
 
   </nav>
@@ -401,6 +422,7 @@ html += "<div class='row'>";
 
 	<p id="total"><p>
     <div id="list"></div>
+
 	<ul class="pagination" id="pagination"></ul>
   </div>
 
@@ -451,7 +473,6 @@ html += "<div class='row'>";
 	<h1 id="success_edit_text" style="display:none;color: green;">Saved!</h1>
 	<button style="margin-top: 5px;" id="back-to-list" class="btn btn-outline-primary">Back to List</button>
     </div>
-
 
   </body>
   </html>
