@@ -6,7 +6,7 @@ foreach($char as $key=>$data){
 	if($key > $_POST['id'] ){
 		$newkey = $key--;
 		$char[$key] = $char[$newkey];
-	
+
 	}
 }
 ksort($char);

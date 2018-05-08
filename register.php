@@ -6,7 +6,7 @@ if(isset($_COOKIE['username'])) {
 	}
    header("Location: index.php");
    exit;
-} 
+}
 if(isset($_SESSION['username'])){
 	 header("Location: index.php");
 	 exit;
@@ -35,7 +35,7 @@ if(isset($_SESSION['username'])){
 		$('[data-toggle="datepicker"]').datepicker();
 		$("#formReg").on("submit", function() {
 			//console.log("login");
-	
+
     // AJAX submit the form
 		var query = $("#formReg").serialize();
 		$.post("userregister.php", query, function(data) {
@@ -52,7 +52,7 @@ if(isset($_SESSION['username'])){
 		},"json");
 			return false;
 		});
-	
+
 	$('#loginBtn').on("click", function(){
 			window.location="loginform.php";
 		});
@@ -75,7 +75,7 @@ if(isset($_SESSION['username'])){
                         <div class="card-body">
 							<h2 style="display:none" id="error-text" class="text-danger"></h2>
                             <form class="form" id="formReg">
-								
+
                                 <div class="form-group">
                                     <label for="uname1">Username</label>
                                     <input type="text" class="form-control form-control-lg rounded-0" name="username" id="username" required>
@@ -96,7 +96,7 @@ if(isset($_SESSION['username'])){
                                     <label>Birthday</label><br>
                                     <!--<input type="text" class="form-control form-control-lg rounded-0" id="birthday" name="birthday" required>!-->
 									<input class="form-control form-control-lg " name="birthday" data-toggle="datepicker">
-									
+
                                 </div>
 								<div class="form-group">
                                     <label>Gender</label>&nbsp;
@@ -118,8 +118,8 @@ if(isset($_SESSION['username'])){
                             </form>
 							<hr>
 							<button id="loginBtn" class="btn btn-info" style="display:block;margin: 0 auto;">Login</button>
-							
-							
+
+
                         </div>
                         <!--/card-block-->
                     </div>

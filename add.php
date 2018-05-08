@@ -8,6 +8,8 @@ $char[$id]["name"] = $_POST["name"];
 	$char[$id]["status"] = $_POST["status"];
 	$char[$id]["patronus"] =$_POST["patronus"];
 	$char[$id]["image"] = $_POST["image"];
+	$char[$id]["description"] = $_POST["description"];
+
 	file_put_contents("char.json", json_encode($char, JSON_PRETTY_PRINT));
 	print json_encode("success");
 

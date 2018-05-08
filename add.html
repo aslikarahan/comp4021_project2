@@ -1,14 +1,3 @@
-<?php
-session_start();
-if(!isset($_SESSION['username'])){
-		if(isset($_COOKIE['username'])){
-			$_SESSION['username'] = $_COOKIE['username'];
-		}else{
-			header("Location: loginform.php");
-			exit;
-		}
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,61 +10,21 @@ if(!isset($_SESSION['username'])){
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="./lib/jquery.twbsPagination.js"></script>
   <style>
   .center-block {
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
-  .del-btn, .edit-btn{
-	 display:block;
-	 margin: 0 auto;
-  }
 </style>
 <script>
 $(document).ready(function() {
   // Submit the form
-  var totalPage = 10;
-  var editCharacter = {};
-  var $pagination = $('#pagination');
-   var defaultOpts = {
-        totalPages: totalPage,
-            visiblePages: 10,
-			first: false,
-			last: false,
-			startPage: 1,
-            onPageClick: function (event, page) {
-                $('.char-col').hide();
-				$('.char-card-'+(page-1)).show();
-				$('html, body').animate({
-					scrollTop: (0)
-				},100);
-    }
-   };
-	$pagination.twbsPagination(defaultOpts);
-    /**$(function () {
-        var obj = $('#pagination').twbsPagination({
-            totalPages: totalPage,
-            visiblePages: 10,
-			first: false,
-			last: false,
-            onPageClick: function (event, page) {
-                $('.char-col').hide();
-				$('.char-card-'+(page-1)).show();
-				$('html, body').animate({
-					scrollTop: (0)
-				},500);
-            }
-        });
-        console.info(obj.data());
-    });**/
+
   $('.carousel').carousel({
     interval: 2000
   })
-  $("#back-to-list").on("click",function(){
-	 window.location.hash = "#list";
-  });
+
   $("#add_form").on("submit", function() {
     // AJAX submit the form
     var query = $("#add_form").serialize();
@@ -83,21 +32,6 @@ $(document).ready(function() {
       if (data == "success"){
         $("#add_form").hide();
         $("#success_text").show();
-		$("#add_form")[0].reset();
-      }
-    }, "json");
-
-    return false;
-  });
-
-    $("#edit_form").on("submit", function() {
-    // AJAX submit the form
-    var query = $("#edit_form").serialize();
-    $.post("edit.php", query, function(data) {
-      if (data == "success"){
-		$("#edit_form").hide();
-        $("#success_edit_text").show();
-
       }
     }, "json");
 
@@ -108,13 +42,9 @@ $(document).ready(function() {
 
 
   $(window).on('hashchange', function() {
-
     // Get the fragment identifier from the URL
     var page = window.location.hash;
     if (page == "#add"){
-		$("#add_form").show();
-        $("#success_text").hide();
-
       $("#add_page").slideDown();
       $("#home_page").hide();
       $("#list_page").hide();
@@ -123,29 +53,29 @@ $(document).ready(function() {
       $("#list_page").slideDown();
       var html ="";
       $.getJSON("list.php", function(data) {
-			processData(data);
-        },"json");
+        var character = JSON.parse(data);
+        $.each(character, function(key) {
+          html += "<div class='row'><div class='col'>";
+          html += "<div><strong>Name: </strong>"+character[key].name+"</div>";
+          html += "<div><strong>House: </strong>"+character[key].house+"</div>"
+          html += "<div><strong>Status: </strong>"+character[key].status+"</div>"
+          html += "<div><strong>Patronus: </strong>"+character[key].patronus+"</div></div>"
+          html += "<div><strong>Description: </strong>"+character[key].description+"</div></div>"
 
+          html += "<div class='col'>";
+          html += "<div> <img style='height: 300px' src='"+character[key].image+"'></img></div></div></div><br>"
+        });
+        $("#list").html(html);
+      });
       $("#home_page").hide();
       $("#add_page").hide();
       $("#edit_page").hide();
     }else if (page == "#edit"){
-
-	    $("#edit_form").show();
-        $("#success_edit_text").hide();
-		if( !editCharacter.name){
-			window.location.hash = "#list";
-		}
       $("#edit_page").slideDown();
       $("#home_page").hide();
+
       $("#add_page").hide();
       $("#list_page").hide();
-	  $("#id-edit").val(editCharacter.id);
-	  $("#name-edit").val(editCharacter.name);
-	  $("#house-edit").val(editCharacter.house);
-	  $("#status-edit").val(editCharacter.status);
-	  $("#patronus-edit").val(editCharacter.patronus);
-	  $("#image-edit").val(editCharacter.image);
     }else if((page == "#")){
       $("#home_page").show();
 
@@ -160,77 +90,39 @@ $(document).ready(function() {
       $("#list_page").hide();
     }
   });
-  function processData(data){
-	        var html ="";
-
-      var character = (data);
-
-      $.each(character, function(key) {
-		  if (key % 3 == 1) html += "<div class='row'>";
-		  html += "<div class='col char-col char-card-"+parseInt((key-1)/6)+"' style=' display: none; padding: 1em'>"
-		  html += "<div class='card char-card' style='width: 20rem;'>";
-		  html += "<img class='card-img-top' src='"+character[key].image+"' alt='Card image cap'>";
-		  html += "<div class='card-body'>";
-		  html += " <h5 class='card-title'>"+character[key].name+"</h5><hr>";
-          html += "<p style='margin-bottom: 0'><strong>House: </strong>"+character[key].house+"</p>"
-          html += "<p style='margin-bottom: 0'><strong>Status: </strong>"+character[key].status+"</p>"
-          html += "<p style='margin-bottom: 0'><strong>Patronus: </strong>"+character[key].patronus+"</p>";
-		  html += "<br><button  id='"+key+"' class='edit-btn btn btn-outline-info'>Edit this character</button>";
-		  html += "<br><button id='"+key+"' class='del-btn btn btn-outline-dark'>Delete this character</button></div></div></div>";
-		  if (key % 3 == 0) html += "</div>"
-
-      });
-	  $("#total").text("Total: " + Object.keys(character).length);
-	 totalPage = Object.keys(character).length/6;
-	 if (Object.keys(character).length%6){
-		 totalPage ++;
-	 }
-      $("#list").html(html);
-	  $pagination.twbsPagination('destroy');
-	  $pagination.twbsPagination($.extend({}, defaultOpts, {
-                startPage: 1,
-                totalPages: totalPage
-            }));
-	$('html, body').animate({
-			scrollTop: (0)
-		},100);
-  }
-   $(document).on('click','.del-btn', function(){
-      var char_key = $(this).attr('id');
-	  $.post("delete.php", {id: char_key}, function(data){
-		processData(data);
-    },"json");
-   });
-
-	 $(document).on('click','.edit-btn', function(){
-		 var char_key = $(this).attr('id');
-		$.getJSON("getChar.php", {id: char_key}, function(data){
-			console.log(data);
-			editCharacter = (data);
-			window.location.hash = "#edit";
-		},"json");
-
-    });
-
-
   $("#listForm select").on("change", function() {
     var query = $("#listForm").serialize();
-    $.getJSON("list.php", query, function(data) {
-		processData(data);
-    },"json")
+    console.log(query);
+    $.get("list.php", query, function(data) {
+      var html ="";
+
+      var character = JSON.parse(data);
+
+      $.each(character, function(key) {
+        html += "<div class='row'><div class='col'>";
+        html += "<div><strong>Name: </strong>"+character[key].name+"</div>";
+        html += "<div><strong>House: </strong>"+character[key].house+"</div>"
+        html += "<div><strong>Status: </strong>"+character[key].status+"</div>"
+        html += "<div><strong>Patronus: </strong>"+character[key].patronus+"</div></div>"
+        html += "<div><strong>Description: </strong>"+character[key].description+"</div></div>"
+
+        html += "<div class='col'>";
+        html += "<div> <img style='height: 300px' src='"+character[key].image+"'></img></div></div></div><br>"
+      });
+      $("#list").html(html);
+    })
     .fail(function() {
       alert("Unknown error!");
     });
   });
 
-	$("#listForm select").trigger("change");
+  $("#listForm select").trigger("change");
 
   $(window).trigger("hashchange");
   $("#logoutBtn").on("click", function(){
-		$.get("logout.php", function(data){
-			window.location = 'loginform.php';
-			$editCharacter = data;
-		},"json");
+    $.get("logout.php", function(data){
+      window.location = 'loginform.php';
+    });
   });
 });
 </script>
@@ -246,7 +138,7 @@ $(document).ready(function() {
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-		<li class="nav-item active">
+        <li class="nav-item active">
           <a class="nav-link" href="#home"><i class="fas fa-home"></i>&nbsp;Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
@@ -255,12 +147,14 @@ $(document).ready(function() {
         <li class="nav-item">
           <a class="nav-link" href="#add">Add Some Magic</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="#edit">Edit Character</a>
+        </li>
       </ul>
 
     </div>
 
-      <button id="logoutBtn" class="btn btn-outline-primary"><i class="fas fa-spinner-third"></i>Logout</button>
+    <button id="logoutBtn" class="btn btn-outline-primary"><i class="fas fa-spinner-third"></i>Logout</button>
 
   </nav>
 
@@ -286,7 +180,7 @@ $(document).ready(function() {
 
   <div  id ="add_page" class="container" style="display: none">
     <h2>Add Character</h2>
-    <form id="add_form">
+    <form id="add_form" >
       <div class="form-group" display="None">
         <label for="name">Name:</label>
         <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
@@ -320,6 +214,10 @@ $(document).ready(function() {
         <label for="image">Image: </label>
         <input type="text" class="form-control" id="image" placeholder="Enter image" name="image">
       </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea type="text" rows="5" maxlength="50" id="description" name="description" placeholder="Enter the description, no more than 350 chars"></textarea>
+      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <h1 id="success_text" style="display:none;color: green;">Added!</h1>
@@ -348,53 +246,12 @@ $(document).ready(function() {
         <option value = "Muggle">Muggle</option>
       </select>
     </form>
-	<p id="total"><p>
     <div id="list"></div>
-	<ul class="pagination" id="pagination"></ul>
   </div>
 
   <div  id ="edit_page" class="container" style="display: none">
     <h2>Edit Character</h2>
-
-	<form id="edit_form">
-	<input type="hidden" class="form-control" id="id-edit"  name="id">
-      <div class="form-group" display="None">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name-edit" value="" placeholder="Enter name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="house">House: </label>
-        <select class="form-control"  id="house-edit" placeholder="Select house" name="house">
-          <option value = "Gryffindor">Gryffindor</option>
-          <option value = "Slytherin">Slytherin</option>
-          <option value = "Hufflepuff">Hufflepuff</option>
-          <option value = "Ravenclaw">Ravenclaw</option>
-          <option value = "-">None</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="status">Status: </label>
-        <select class="form-control"  id="status-edit" placeholder="Enter status" name="status" required>
-          <option value = "Pure Blood">Pure Blood</option>
-          <option value = "Half Blood">Half Blood</option>
-          <option value = "Muggle Born">Muggle Born</option>
-          <option value = "Muggle">Muggle</option>
-          <option value = "-">Other</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="patronus">Patronus: </label>
-        <input type="text" class="form-control" id="patronus-edit" placeholder="Enter patronus" name="patronus">
-      </div>
-      <div class="form-group">
-        <label for="image">Image: </label>
-        <input type="text" class="form-control" id="image-edit" placeholder="Enter image" name="image">
-      </div>
-      <button type="submit" class="btn btn-primary">Update</button>
-    </form>
-	<h1 id="success_edit_text" style="display:none;color: green;">Saved!</h1>
-	<button style="margin-top: 5px;" id="back-to-list" class="btn btn-outline-primary">Back to List</button>
+    <p> ipsum lolzi lolzi lolzi akjdhkjahsd<p>
     </div>
 
 

@@ -35,7 +35,7 @@ if(isset($_SESSION['username'])){
 	$(document).ready(function() {
 		$("#formLogin").on("submit", function() {
 			//console.log("login");
-  
+
     // AJAX submit the form
 		var query = $("#formLogin").serialize();
 		$.post("login.php", query, function(data) {
@@ -45,7 +45,7 @@ if(isset($_SESSION['username'])){
 			}else{
 				$("#error-text").html('<i class="fas fa-exclamation-triangle"></i>&nbsp;' + data.message);
 				$("#error-text").show();
-				
+
 			}
 		},"json");
 

@@ -10,7 +10,7 @@ $arrContextOptions=array(
         "verify_peer"=>false,
         "verify_peer_name"=>false,
     ),
-); 
+);
 $verify = file_get_contents($url."?secret=".$secret."&response=".$response, false, stream_context_create($arrContextOptions));
 
 $verify = json_decode($verify, true);
