@@ -47,7 +47,7 @@ $(document).ready(function() {
 			startPage: 1,
             onPageClick: function (event, page) {
                 $('.char-col').hide();
-				$('.char-card-'+(page-1)).show();
+				$('.char-card-'+(page)).show();
 				$('html, body').animate({
 					scrollTop: (0)
 				},100);
@@ -164,12 +164,14 @@ $(document).ready(function() {
   });
   function processData(data){
 	        var html ="";
-
-      var character = (data);
-
+			var character = (data);
+			var i = 0;
+			var counter = 0;
+html += "<div class='row'>";
       $.each(character, function(key) {
-		  if (key % 3 == 1) html += "<div class='row'>";
-		  html += "<div class='col char-col char-card-"+parseInt((key-1)/6)+"' style=' display: none; padding: 1em'>"
+		  if((i % 6) == 0){counter++;}
+		  i++;
+		  html += "<div class='col-sm char-col char-card-"+counter+"' style=' display: none; padding: 1em'>"
 		  html += "<div class='card char-card' style='width: 20rem;'>";
 		  html += "<img class='card-img-top' src='"+character[key].image+"' alt='Card image cap'>";
 		  html += "<div class='card-body'>";
@@ -181,9 +183,10 @@ $(document).ready(function() {
 
 		  html += "<br><button  id='"+key+"' class='edit-btn btn btn-outline-info'>Edit this character</button>";
 		  html += "<br><button id='"+key+"' class='del-btn btn btn-outline-dark'>Delete this character</button></div></div></div>";
-		  if (key % 3 == 0) html += "</div>"
+		 
 
       });
+	   html += "</div>"
 	  $("#total").text("Total: " + Object.keys(character).length);
 	 totalPage = Object.keys(character).length/6;
 	 if (Object.keys(character).length%6){
