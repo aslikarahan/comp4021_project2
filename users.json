@@ -12,5 +12,12 @@
         "gender": "M",
         "birthday": "05\/11\/2018",
         "password": "test"
+    },
+    "asl": {
+        "name": "asl",
+        "email": "asl@test.com",
+        "gender": "F",
+        "birthday": "05\/01\/2018",
+        "password": "asl"
     }
 }

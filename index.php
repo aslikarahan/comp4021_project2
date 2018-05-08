@@ -84,9 +84,19 @@ $(document).ready(function() {
     $.post("add.php", query, function(data) {
       if (data == "success"){
         $("#add_form").hide();
+				$("#fail_text").hide();
+
         $("#success_text").show();
 		$("#add_form")[0].reset();
-      }
+	}else{
+		$("#add_form").hide();
+
+		$("#success_text").hide();
+		$("#fail_text").show();
+		$("#add_form")[0].reset();
+
+
+	}
     }, "json");
 
     return false;
@@ -116,6 +126,7 @@ $(document).ready(function() {
     if (page == "#add"){
 		$("#add_form").show();
         $("#success_text").hide();
+				$("#fail_text").hide();
 
       $("#add_page").slideDown();
       $("#home_page").hide();
@@ -340,6 +351,8 @@ html += "<div class='row'>";
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <h1 id="success_text" style="display:none;color: green;">Added!</h1>
+		<h1 id="fail_text" style="display:none;color: red;">Character Already Exists!</h1>
+
   </div>
 
   <div  id ="list_page" class="container" style="display: none">
