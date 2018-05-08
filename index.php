@@ -233,8 +233,8 @@ html += "<div class='row'>";
   });
 
 	 $("#listForm select").trigger("change");
-	$("#search-button").on("click",function(){
-//
+	$("#listForm").on("submit",function(event){
+		event.preventDefault();
 	});
   $(window).trigger("hashchange");
 
