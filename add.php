@@ -5,7 +5,7 @@ $last_id = max(array_keys($char));
 $valid_char=true;
 $name = $_POST['name'];
 for ($x = 1; $x < max(array_keys($char)); $x++) {
-  if($char[$x]['name']==$name){
+  if(strcasecmp($char[$x]['name'], $name) == 0){
 		$valid_char=false;
   }
 }
