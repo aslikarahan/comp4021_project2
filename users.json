@@ -10,10 +10,9 @@
     "test": {
         "name": "test",
         "email": "test@test.com",
-        "gender": "M",
-        "birthday": "05\/11\/2018",
+        "gender": "F",
+        "birthday": "",
         "password": "test",
         "image": "userpp\/avatar.png"
-
     }
 }

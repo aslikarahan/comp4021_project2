@@ -316,6 +316,9 @@ html += "<div class='row'>";
         <li class="nav-item">
           <a class="nav-link" href="#add">Add Some Magic</a>
         </li>
+				<li class="nav-item">
+          <a class="nav-link" href="profileEdit.php">Edit Profile</a>
+        </li>
 
       </ul>
 
