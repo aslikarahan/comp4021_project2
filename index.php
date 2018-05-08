@@ -124,7 +124,7 @@ $(document).ready(function() {
     }else if(page == "#list"){
       $("#list_page").slideDown();
       var html ="";
-      $.getJSON("list.php", function(data) {
+      $.getJSON("search.php", function(data) {
 			processData(data);
         },"json");
 
