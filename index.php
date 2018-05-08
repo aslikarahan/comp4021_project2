@@ -146,6 +146,8 @@ $(document).ready(function() {
 	  $("#status-edit").val(editCharacter.status);
 	  $("#patronus-edit").val(editCharacter.patronus);
 	  $("#image-edit").val(editCharacter.image);
+		$("#description-edit").val(editCharacter.description);
+
     }else if((page == "#")){
       $("#home_page").show();
 
@@ -175,6 +177,8 @@ $(document).ready(function() {
           html += "<p style='margin-bottom: 0'><strong>House: </strong>"+character[key].house+"</p>"
           html += "<p style='margin-bottom: 0'><strong>Status: </strong>"+character[key].status+"</p>"
           html += "<p style='margin-bottom: 0'><strong>Patronus: </strong>"+character[key].patronus+"</p>";
+					html += "<p style='margin-bottom: 0'><strong>Description: </strong>"+character[key].description+"</p>";
+
 		  html += "<br><button  id='"+key+"' class='edit-btn btn btn-outline-info'>Edit this character</button>";
 		  html += "<br><button id='"+key+"' class='del-btn btn btn-outline-dark'>Delete this character</button></div></div></div>";
 		  if (key % 3 == 0) html += "</div>"
@@ -320,6 +324,11 @@ $(document).ready(function() {
         <label for="image">Image: </label>
         <input type="text" class="form-control" id="image" placeholder="Enter image" name="image">
       </div>
+			<div class="form-group">
+				<label for="description">Description:</label>
+				<textarea type="text" class="form-control" rows="5" maxlength="350" id="description" name="description" placeholder="Enter the description, no more than 350 chars"></textarea>
+			</div>
+
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <h1 id="success_text" style="display:none;color: green;">Added!</h1>
@@ -391,6 +400,10 @@ $(document).ready(function() {
         <label for="image">Image: </label>
         <input type="text" class="form-control" id="image-edit" placeholder="Enter image" name="image">
       </div>
+			<div class="form-group">
+				<label for="description">Description:</label>
+				<textarea type="text" class="form-control" id="description-edit" rows="5" maxlength="350" name="description" placeholder="Enter the description, no more than 350 chars"></textarea>
+			</div>
       <button type="submit" class="btn btn-primary">Update</button>
     </form>
 	<h1 id="success_edit_text" style="display:none;color: green;">Saved!</h1>
