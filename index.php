@@ -55,7 +55,7 @@ if(!isset($_SESSION['username'])){
 .carousel-inner > .carousel-item > img {
  max-height: 60vh;
 max-width:100vw;
-min-width: 60vw;
+min-width: 50vw;
 
 }
 	#profile-pic{
@@ -116,7 +116,7 @@ $("#profile-pic").attr("src",data);
         console.info(obj.data());
     });**/
   $('.carousel').carousel({
-    interval: 1500
+    interval: 2000
   })
 
 
@@ -359,6 +359,25 @@ html += "<div class='row'>";
         <div class="carousel-item">
           <img class="d-block" src="img\/c4.jpeg" alt="Fourth slide">
         </div>
+				<div class="carousel-item">
+          <img class="d-block" src="img\/c5.jpg" alt="Fifth slide">
+        </div>
+				<div class="carousel-item">
+          <img class="d-block" src="img\/c6.jpg" alt="Sixth slide">
+        </div>
+				<div class="carousel-item">
+          <img class="d-block" src="img\/c7.jpg" alt="Seventh slide">
+        </div>
+				<div class="carousel-item">
+          <img class="d-block" src="img\/c8.jpg" alt="Eigth slide">
+        </div>
+				<div class="carousel-item">
+          <img class="d-block" src="img\/c9.jpg" alt="Ninth slide">
+        </div>
+				<div class="carousel-item">
+          <img class="d-block" src="img\/c10.jpg" alt="Tenth slide">
+        </div>
+
       </div>
     </div>
   </div>
