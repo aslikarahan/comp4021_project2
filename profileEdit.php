@@ -48,6 +48,9 @@ if(!isset($_SESSION['username'])){
 
 $(document).ready(function() {
 	//$('[data-toggle="datepicker"]').datepicker();
+	$('#back-to-main').on('click', function(){
+		window.location = 'index.php';
+	});
 var username = <?php echo json_encode($_SESSION['username']) ?>;
 var query= "username="+username;
 $.getJSON("userProfilePicture.php", query, function(data) {
@@ -84,8 +87,9 @@ $("#profile-pic").attr("src",data);
  console.log(JSON.stringify(query));
  $.post("editUser.php", query, function(data) {
     if (data == "success"){
-  $("#editForm").hide();
-      $("#success_edit_text").show();
+		$("#success-text").show();
+		$("#editForm").hide();
+		
 
     }
   }, "json");
@@ -110,13 +114,13 @@ $("#profile-pic").attr("src",data);
 
               <div class="form-group">
                   <label for="username-edit">Username</label>
-                  <input type="text" class="form-control form-control-lg rounded-0" name="username" id="username-edit" required>
+                  <input type="text" class="form-control form-control-lg rounded-0" name="username" id="username-edit" readonly required>
               </div>
-  <div class="form-group">
+			  <div class="form-group">
                   <label for="name-edit">Name</label>
                   <input type="text" class="form-control form-control-lg rounded-0" name="name" id="name-edit" required>
               </div>
-  <div class="form-group">
+			  <div class="form-group">
                   <label for="email">E-mail</label>
                   <input type="email" class="form-control form-control-lg rounded-0" name="email" id="email" required>
               </div>
@@ -124,26 +128,26 @@ $("#profile-pic").attr("src",data);
                   <label>Password</label>
                   <input type="password" class="form-control form-control-lg rounded-0" id="pwd" name="password" required>
               </div>
-  <div class="form-group">
+			  <div class="form-group">
                   <label>Birthday</label><br>
                   <!--<input type="text" class="form-control form-control-lg rounded-0" id="birthday" name="birthday" required>!-->
 					<input class="form-control form-control-lg " id="birthday" name="birthday" data-toggle="datepicker">
-
               </div>
-  <div class="form-group">
+				<div class="form-group">
                   <label>Gender</label>&nbsp;
                   <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="gender" id="gender1" value="M" checked>
-  <label class="form-check-label" for="exampleRadios1">
-  Male
-  </label>
-  </div>
-  <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="gender" id="gender2" value="F">
-  <label class="form-check-label" for="exampleRadios1">
-  Female
-  </label>
-  </div>
+					  <input class="form-check-input" type="radio" name="gender" id="gender1" value="M" checked>
+					  <label class="form-check-label" for="exampleRadios1">
+					  Male
+					  </label>
+					  </div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="gender" id="gender2" value="F">
+					  <label class="form-check-label" for="exampleRadios1">
+					  Female
+					  </label>
+					  </div>
+			</div>
 
   <h6>Upload a different photo...</h6>
     <input type="file" class="form-control">
@@ -151,5 +155,8 @@ $("#profile-pic").attr("src",data);
     <button type="submit" class="btn btn-primary" style="display:block;margin: 0 auto;" id="btnSubmit">Submit Changes</button>
 
   </form>
+  	<h1 id="success-text" style="display:none;color: green;">Saved!</h1>
+	<button style="margin-top: 5px;" id="back-to-main" class="btn btn-outline-primary">Back to Main Page</button>
+	</div>
   </body>
   </html>

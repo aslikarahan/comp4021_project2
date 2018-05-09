@@ -6,6 +6,12 @@
         "birthday": "05\/08\/2018",
         "password": "test",
         "image": "userpp\/avatar.png"
-
+    },
+    "": {
+        "name": "test",
+        "email": "test@test.com",
+        "gender": "M",
+        "birthday": "05\/10\/2018",
+        "password": "test"
     }
 }

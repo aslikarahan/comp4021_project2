@@ -323,7 +323,9 @@ html += "<div class='row'>";
       </ul>
 
     </div>
+		
 		<img id="profile-pic" src="" alt="">
+		<span style="font-size: 20px;">Hi,<?php echo $_SESSION['username']?></span>&nbsp;&nbsp;
       <button id="logoutBtn" class="btn btn-outline-primary"><i class="fas fa-spinner-third"></i>Logout</button>
 
   </nav>
