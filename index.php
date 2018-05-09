@@ -24,6 +24,10 @@ if(!isset($_SESSION['username'])){
 <script src="./lib/jquery.twbsPagination.js"></script>
 
   <style>
+	html, body{
+      padding: 0;
+      margin: 0;
+   }
   .center-block {
     display: center-block;
     margin-left: auto;
@@ -34,24 +38,30 @@ if(!isset($_SESSION['username'])){
 	 margin: 0 auto;
   }
 	.carousel{
-		align-self: center;
+		display: block;
+		width:75vw;
+    margin-left: 0 auto;
+    /* margin-right: auto; */
+
 		margin-bottom: 10px;
-	}
-	.carousel-item{
-		align-self: center;
-		height: 20em;
-		width:auto;
+		background-color: rgba(0, 0, 0, 0.95);
+		background-size: cover;
 
 
 	}
-	.carousel-item img{
-		height: 20em;
-		width:auto;
-	}
+	.carousel-inner img {
+  margin: auto;
+}
+.carousel-inner > .carousel-item > img {
+ max-height: 60vh;
+max-width:100vw;
+min-width: 60vw;
+
+}
 	#profile-pic{
-		height:80px;
-		border-radius: 40px;
-		margin-right: 10px;
+		height:10vh;
+		border-radius: 5vh;
+		margin-left: 2vw;
 		background: lightgrey;
 	}
 
@@ -106,7 +116,7 @@ $("#profile-pic").attr("src",data);
         console.info(obj.data());
     });**/
   $('.carousel').carousel({
-    interval: 2000
+    interval: 1500
   })
 
 
@@ -300,7 +310,7 @@ html += "<div class='row'>";
   <nav class="navbar navbar-expand-lg navbar-light bg-light" >
 
     <a class="navbar-brand" href="#">
-      <img border="0" src="img/logo.png" height="100">
+      <img border="0" src="img/logo.png" height="50vh">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -323,27 +333,31 @@ html += "<div class='row'>";
       </ul>
 
     </div>
-		
-		<img id="profile-pic" src="" alt="">
-		<span style="font-size: 20px;">Hi,<?php echo $_SESSION['username']?></span>&nbsp;&nbsp;
-      <button id="logoutBtn" class="btn btn-outline-primary"><i class="fas fa-spinner-third"></i>Logout</button>
+
+		<img id="profile-pic" class ="d-none d-md-block" src="" alt="">
+		<span class ="d-none d-md-block" style="font-size: 5vh;">Hi,<?php echo $_SESSION['username']?></span>&nbsp;&nbsp;
+		<button id="logoutBtn" class="btn btn-outline-primary d-inline"><i class="fas fa-spinner-third"></i>Logout</button>
 
   </nav>
 
-  <div  id ="home_page" class="container center-block" style="display: none">
-    <div  class="carousel slide" data-ride="carousel" >
-      <div class="carousel-inner">
+  <div  id ="home_page" class="container" style="display: none">
+		<!-- <button type="button" class="close" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button> -->
+    <div  class="carousel slide d-block" data-ride="carousel" >
+
+      <div class="carousel-inner d-block">
         <div class="carousel-item active">
-          <img class="d-block   md-12" src="img\/c1.jpg" alt="First slide">
+          <img class="d-block" src="img\/c1.jpg" alt="First slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block   md-12" src="img\/c2.jpg" alt="Second slide">
+          <img class="d-block" src="img\/c2.jpg" alt="Second slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block   md-12" src="img\/c3.jpg" alt="Third slide">
+          <img class="d-block" src="img\/c3.jpg" alt="Third slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block   md-12" src="img\/c4.jpeg" alt="Fourth slide">
+          <img class="d-block" src="img\/c4.jpeg" alt="Fourth slide">
         </div>
       </div>
     </div>
