@@ -31,7 +31,7 @@ header("Location: index.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Profile Edit</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -45,6 +45,15 @@ header("Location: index.php");
   <link rel="stylesheet" href="./lib/datepicker.min.css">
 
   <style>
+	.body{
+		background-color: lightgrey;
+	}
+	.container-fluid{
+		/* margin, padding: -10; */
+		background:url('img/edit-background.jpg') repeat center top #FFF;
+
+
+	}
   .center-block {
     display: center-block;
     margin-left: auto;
@@ -56,7 +65,11 @@ header("Location: index.php");
   }
 
 	#profile-pic{
-		background: lightgrey;
+		display: block;
+	     margin: auto;
+			 padding: 1vh;
+			 height: 30vh;
+			 width: auto;
 	}
 
 </style>
@@ -108,7 +121,7 @@ $("#profile-pic").attr("src",data);
     if (data == "success"){
 		$("#success-text").show();
 		$("#editForm").hide();
-		
+
 
     }
   }, "json");
@@ -122,7 +135,9 @@ $("#profile-pic").attr("src",data);
 </script>
 </head>
 <body>
-  <img id="profile-pic" class="col-md6 col-sm-3" src="" alt="">
+	<div class="container-fluid">
+  <img id="profile-pic" class="center" src="" alt="">
+	  </div>
   <div class="card rounded-0">
       <div class="card-header">
           <h3 class="mb-0 text-center">Edit Profile</h3>
@@ -171,11 +186,11 @@ $("#profile-pic").attr("src",data);
   <h6>Upload a different photo...</h6>
     <input type="file" name="file" class="form-control">
 
-    <button type="submit" class="btn btn-primary" style="display:block;margin: 0 auto;" id="btnSubmit">Submit Changes</button>
+    <button type="submit" class="btn btn-primary" style="display:block;margin: 0 auto; padding:1vh;" id="btnSubmit">Submit Changes</button>
 
   </form>
 
-	<button style="margin-top: 5px;" id="back-to-main" class="btn btn-outline-primary">Back to Main Page</button>
+	<button id="back-to-main"style="display:block;margin: 0 auto; padding:1vh;" class="btn btn-outline-primary">Back to Main Page</button>
 	</div>
   </body>
   </html>

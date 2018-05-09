@@ -12,7 +12,7 @@ if(!isset($_SESSION['username'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Hogwarts</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -28,6 +28,9 @@ if(!isset($_SESSION['username'])){
       padding: 0;
       margin: 0;
    }
+	 .container{
+ 		margin, padding: 0;
+ 	}
   .center-block {
     display: center-block;
     margin-left: auto;
@@ -40,7 +43,7 @@ if(!isset($_SESSION['username'])){
 	.carousel{
 		display: block;
 		width:75vw;
-    margin-left: 0 auto;
+    margin: auto;
     /* margin-right: auto; */
 
 		margin-bottom: 10px;
@@ -347,7 +350,7 @@ html += "<div class='row'>";
 
   </nav>
 
-  <div  id ="home_page" class="container" style="display: none">
+  <div  id ="home_page" class="container-fluid" style="display: none">
 		<!-- <button type="button" class="close" aria-label="Close">
 <span aria-hidden="true">&times;</span>
 </button> -->
@@ -392,7 +395,7 @@ html += "<div class='row'>";
   </div>
 
 
-  <div  id ="add_page" class="container" style="display: none">
+  <div  id ="add_page" class="container-fluid" style="display: none">
     <h2>Add Character</h2>
     <form id="add_form">
       <div class="form-group" display="None">
@@ -473,7 +476,7 @@ html += "<div class='row'>";
 	<ul class="pagination" id="pagination"></ul>
   </div>
 
-  <div  id ="edit_page" class="container" style="display: none">
+  <div  id ="edit_page" class="container-fluid" style="display: none">
     <h2>Edit Character</h2>
 
 	<form id="edit_form">
