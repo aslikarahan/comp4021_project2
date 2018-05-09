@@ -52,6 +52,10 @@ if(!isset($_SESSION['username'])){
 	.carousel-inner img {
   margin: auto;
 }
+.close {
+    color: #fff;
+    opacity: 0.80;
+}
 .carousel-inner > .carousel-item > img {
  max-height: 60vh;
 max-width:100vw;
@@ -180,7 +184,7 @@ $("#profile-pic").attr("src",data);
       $("#list_page").hide();
       $("#edit_page").hide();
     }else if(page == "#list"){
-			$("#home_page").hide();
+			$("#home_page").show();
 
       $("#list_page").slideDown();
       var html ="";
@@ -200,7 +204,7 @@ $("#profile-pic").attr("src",data);
 		$("#home_page").show();
       $("#edit_page").slideDown();
       $("#add_page").hide();
-      $("#list_page").hide();
+      $("#list_page").show();
 	  $("#id-edit").val(editCharacter.id);
 	  $("#name-edit").val(editCharacter.name);
 	  $("#house-edit").val(editCharacter.house);
@@ -270,6 +274,12 @@ html += "<div class='row'>";
     },"json");
    });
 
+	 $(document).on('click','#close-carousel', function(){
+
+	 $("#home_page").slideUp();
+
+	 });
+
 	 $(document).on('click','.edit-btn', function(){
 		 var char_key = $(this).attr('id');
 		$.getJSON("getChar.php", {name: char_key}, function(data){
@@ -321,9 +331,6 @@ html += "<div class='row'>";
           <a class="nav-link" href="#home"><i class="fas fa-home"></i>&nbsp;Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#list">Just the List</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#add">Add Some Magic</a>
         </li>
 				<li class="nav-item">
@@ -345,7 +352,9 @@ html += "<div class='row'>";
 <span aria-hidden="true">&times;</span>
 </button> -->
     <div  class="carousel slide d-block" data-ride="carousel" >
-
+			<button id="close-carousel" type="button" class="close" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
       <div class="carousel-inner d-block">
         <div class="carousel-item active">
           <img class="d-block" src="img\/c1.jpg" alt="First slide">
