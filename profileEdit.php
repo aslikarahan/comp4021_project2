@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if(!isset($_SESSION['username'])){
 		if(isset($_COOKIE['username'])){
 			$_SESSION['username'] = $_COOKIE['username'];
@@ -7,6 +8,24 @@ if(!isset($_SESSION['username'])){
 			header("Location: loginform.php");
 			exit;
 		}
+}
+if($_FILES){
+	move_uploaded_file($_FILES["file"]["tmp_name"],"userpp/".$_FILES["file"]["name"]);
+}if($_POST){
+$users = file_get_contents("users.json");
+$users = json_decode($users, true);
+$id = $_POST['username'];
+$users[$id]["name"] = $_POST["name"];
+$users[$id]["email"] = $_POST["email"];
+$users[$id]["gender"] = $_POST["gender"];
+$users[$id]["birthday"] =$_POST["birthday"];
+$users[$id]["password"] = $_POST["password"];
+$users[$id]["image"] = "userpp/".$_FILES["file"]["name"];
+
+
+file_put_contents("users.json", json_encode($users, JSON_PRETTY_PRINT));
+header("Location: index.php");
+
 }
 ?>
 <!DOCTYPE html>
@@ -81,7 +100,7 @@ $("#profile-pic").attr("src",data);
 		$('#birthday').val($('[data-toggle="datepicker"]').datepicker('getDate', true));
   },"json");
 
-  $("#editForm").on("submit", function() {
+  /*$("#editForm").on("submit", function() {
  $('#birthday').val($('[data-toggle="datepicker"]').datepicker('getDate', true));
   var query = $("#editForm").serialize();
  console.log(JSON.stringify(query));
@@ -95,7 +114,7 @@ $("#profile-pic").attr("src",data);
   }, "json");
 
   return false;
-  });
+  });*/
 
 
 
@@ -109,8 +128,8 @@ $("#profile-pic").attr("src",data);
           <h3 class="mb-0 text-center">Edit Profile</h3>
       </div>
       <div class="card-body">
-  <h2 style="display:none" id="error-text" class="text-danger"></h2>
-          <form class="form" id="editForm">
+  <h2 id="error-text" class="text-danger"></h2>
+          <form enctype="multipart/form-data" method="POST" action="profileEdit.php" class="form" id="editForm">
 
               <div class="form-group">
                   <label for="username-edit">Username</label>
@@ -150,12 +169,12 @@ $("#profile-pic").attr("src",data);
 			</div>
 
   <h6>Upload a different photo...</h6>
-    <input type="file" class="form-control">
+    <input type="file" name="file" class="form-control">
 
     <button type="submit" class="btn btn-primary" style="display:block;margin: 0 auto;" id="btnSubmit">Submit Changes</button>
 
   </form>
-  	<h1 id="success-text" style="display:none;color: green;">Saved!</h1>
+
 	<button style="margin-top: 5px;" id="back-to-main" class="btn btn-outline-primary">Back to Main Page</button>
 	</div>
   </body>
