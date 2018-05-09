@@ -22,8 +22,8 @@ if(!isset($_SESSION['username'])){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="./lib/jquery.twbsPagination.js"></script>
-<script src="./lib/datepicker.min.js"></script>
-
+  <script src='./lib/datepicker.min.js'></script>
+  <link rel="stylesheet" href="./lib/datepicker.min.css">
 
   <style>
   .center-block {
@@ -47,6 +47,7 @@ if(!isset($_SESSION['username'])){
 
 
 $(document).ready(function() {
+	//$('[data-toggle="datepicker"]').datepicker();
 var username = <?php echo json_encode($_SESSION['username']) ?>;
 var query= "username="+username;
 $.getJSON("userProfilePicture.php", query, function(data) {
@@ -70,15 +71,18 @@ $("#profile-pic").attr("src",data);
 
       }
 
-      $("#birthday").val(editCharacter.birthday);
+      $('[data-toggle="datepicker"]').datepicker({
+			date: new Date(editCharacter.birthday) // Or '02/14/2014'
+		});
       $("#pwd").val(editCharacter.password);
-
+		$('#birthday').val($('[data-toggle="datepicker"]').datepicker('getDate', true));
   },"json");
 
   $("#editForm").on("submit", function() {
-  // AJAX submit the form
+ $('#birthday').val($('[data-toggle="datepicker"]').datepicker('getDate', true));
   var query = $("#editForm").serialize();
-  $.post("editUser.php", query, function(data) {
+ console.log(JSON.stringify(query));
+ $.post("editUser.php", query, function(data) {
     if (data == "success"){
   $("#editForm").hide();
       $("#success_edit_text").show();
@@ -123,7 +127,7 @@ $("#profile-pic").attr("src",data);
   <div class="form-group">
                   <label>Birthday</label><br>
                   <!--<input type="text" class="form-control form-control-lg rounded-0" id="birthday" name="birthday" required>!-->
-  <input class="form-control form-control-lg " name="birthday" data-toggle="datepicker">
+					<input class="form-control form-control-lg " id="birthday" name="birthday" data-toggle="datepicker">
 
               </div>
   <div class="form-group">

@@ -1,18 +1,11 @@
 {
-    "almen1996": {
-        "name": "Almen Wong",
-        "email": "almen1996@yahoo.com.hk",
-        "gender": "F",
-        "birthday": "16\/08\/1996",
-        "password": "081696almen",
-        "image": "userpp\/avatar.png"
-    },
     "test": {
         "name": "test",
         "email": "test@test.com",
-        "gender": "F",
-        "birthday": "",
+        "gender": "M",
+        "birthday": "05\/08\/2018",
         "password": "test",
         "image": "userpp\/avatar.png"
+
     }
 }
