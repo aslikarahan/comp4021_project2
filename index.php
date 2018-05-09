@@ -310,7 +310,7 @@ html += "<div class='row'>";
 	});
   $(window).trigger("hashchange");
 
-  $("#logoutBtn").on("click", function(){
+  $("#logout-button").on("click", function(){
 		$.get("logout.php", function(data){
 			window.location = 'loginform.php';
 			$editCharacter = data;
@@ -346,7 +346,7 @@ html += "<div class='row'>";
 
 		<img id="profile-pic" class ="d-none d-md-block" src="" alt="">
 		<span class ="d-none d-md-block" style="font-size: 5vh;">Hi,<?php echo $_SESSION['username']?></span>&nbsp;&nbsp;
-		<button id="logoutBtn" class="btn btn-outline-primary d-inline"><i class="fas fa-spinner-third"></i>Logout</button>
+		<button id="logoutBtn" class="btn btn-outline-primary d-inline"  data-toggle="modal" data-target="#exampleModal">Logout</button>
 
   </nav>
 
@@ -523,6 +523,24 @@ html += "<div class='row'>";
 	<h1 id="success_edit_text" style="display:none;color: green;">Saved!</h1>
 	<button style="margin-top: 5px;" id="back-to-list" class="btn btn-outline-primary">Back to List</button>
     </div>
-
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to logout?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="logout-button" class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
   </body>
   </html>
